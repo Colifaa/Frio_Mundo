@@ -1,52 +1,62 @@
-import React from 'react';
-import { useDisclosure } from "@chakra-ui/react"
-
-
-import {
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  Button,
-  Input,
-} from '@chakra-ui/react'
+import React, { useState, useEffect } from 'react';
+import { useDisclosure } from "@chakra-ui/react";
+import { supabase } from "./../../lib/supabaseClient";
+import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
 export default function Home() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = React.useRef()
+  // Estado para almacenar los productos
+  const [productos, setProductos] = useState([]);
+  console.log("productos",productos);
+
+  // Función para cargar los productos desde la base de datos
+  const getProductos = async () => {
+    try {
+      // Realiza la consulta para obtener todos los productos
+      const { data: productos, error } = await supabase
+        .from('Products')
+        .select('*');
+
+      if (error) {
+        console.error('Error al cargar los productos:', error);
+      } else {
+        setProductos(productos); // Actualiza el estado con los productos obtenidos
+      }
+    } catch (error) {
+      console.error('Error al cargar los productos:', error);
+    }
+  };
+
+
+  useEffect(() => {
+    getProductos();
+  }, []);
+
   return (
-    <>
-      <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-        Open
-      </Button>
-      <Drawer
-        isOpen={isOpen}
-        placement='top'
-        onClose={onClose}
-        finalFocusRef={btnRef}
-        size="full"
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Chupala Santi !! HAHAHAAHAHA 🤑❤️</DrawerHeader>
-
-          <DrawerBody>
-            <Input placeholder='BOCA TU COLA ES MIA' />
-          </DrawerBody>
-
-          <DrawerFooter>
-            <Button variant='outline' mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme='blue'>Sabpee🤑❤️</Button>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
-    </>
-  )
+    <div>
+      <Table variant="simple">
+        <Thead>
+          <Tr>
+            <Th>Nombre</Th>
+            <Th>Precio</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+        {productos.map((producto) => (
+  <Tr key={producto.id}>
+    <Td>{producto.name}</Td> {/* Cambiar producto.nombre a producto.name */}
+    <Td>{producto.wall_type}</Td> {/* Cambiar producto.precio a producto.price */}
+    <Td>{producto.price}</Td> {/* Cambiar producto.precio a producto.price */}
+    <Td>{producto.size}</Td> {/* Cambiar producto.precio a producto.price */}
+    <Td>
+  <img src={producto.image} alt={producto.name} width="100" />
+</Td>
+  </Tr>
+))}
+        </Tbody>
+      </Table>
+    </div>
+  );
 }
