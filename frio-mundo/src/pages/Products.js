@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDisclosure } from "@chakra-ui/react";
 import { supabase } from "./../../lib/supabaseClient";
-import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Image, Text, Heading, Card, CardBody } from '@chakra-ui/react';
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,28 +35,33 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <Table variant="simple">
-        <Thead>
-          <Tr>
-            <Th>Nombre</Th>
-            <Th>Precio</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-        {productos.map((producto) => (
-  <Tr key={producto.id}>
-    <Td>{producto.name}</Td> {/* Cambiar producto.nombre a producto.name */}
-    <Td>{producto.wall_type}</Td> {/* Cambiar producto.precio a producto.price */}
-    <Td>{producto.price}</Td> {/* Cambiar producto.precio a producto.price */}
-    <Td>{producto.size}</Td> {/* Cambiar producto.precio a producto.price */}
-    <Td>
-  <img src={producto.image} alt={producto.name} width="100" />
-</Td>
-  </Tr>
-))}
-        </Tbody>
-      </Table>
-    </div>
-  );
+    <Grid templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' }} gap={4} justifyContent="center">
+    {productos?.map((producto, index) => (
+      <GridItem key={index} display="flex" flexDirection="column" alignItems="center">
+        <Card maxW="300px" mx="auto" bgColor="#000000" color="#FFFFFF" alignItems="center">
+          <CardBody>
+            <Image
+              src={producto.image}
+              alt={`Imagen de ${producto.name}`}
+              borderRadius="lg"
+              border="4px"
+              borderColor="#FF5733"
+              boxSize="250px"
+            />
+            <Text fontSize={['xs', 'sm', 'md', 'lg', 'xl']} fontWeight="light" fontFamily="Georgia">
+              {producto.wall_type}
+            </Text>
+            <Heading size="md" color="#A7414C">
+              {producto.name}
+            </Heading>
+            <Text color="#FF5733" fontSize="xl">
+              ${producto.price}
+            </Text>
+          </CardBody>
+        </Card>
+      </GridItem>
+    ))}
+  </Grid>
+);
 }
+

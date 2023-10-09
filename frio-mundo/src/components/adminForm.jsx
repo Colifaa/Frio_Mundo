@@ -1,186 +1,262 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Box,
-  Button,
   FormControl,
   FormLabel,
   Input,
-  Text,
-  VStack,
+  FormHelperText,
+  Button,
+  Box,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
 } from '@chakra-ui/react';
 import { supabase } from "../../lib/supabaseClient";
+import Cards from './cards';
 
 function ProductForm() {
-  const [products, setProducts] = useState([]);
-  const [formData, setFormData] = useState({
-    name: '',
-    size: '',
-    image: null,
-    wall_type: '',
-    price: '',
-  });
+  const [showForm, setShowForm] = useState(false);
+  const [editMode, setEditMode] = useState(false); // Nuevo estado para el modo de edición
+  const [nombreProducto, setNombreProducto] = useState('');
+  const [precioProducto, setPrecioProducto] = useState('');
+  //const [ingredientes, setIngredientes] = useState('');
+  const [pared, setPared] = useState('');
+  const [imagenProducto, setImagenProducto] = useState("");
+  const [Tamaño, setTamaño] = useState("");
 
-  const fetchProducts = async () => {
-    const { data, error } = await supabase.from('products').select('*');
-    if (error) {
-      console.error('Error fetching products:', error);
-    } else {
-      setProducts(data);
-    }
-  };
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const [productos, setProductos] = useState([]); // Lista de productos
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para verificar si el usuario ha iniciado sesión
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({ ...formData, image: file });
-  };
+
+  const [isFormularioOpen, setIsFormularioOpen] = useState(false);
+  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataToSend = new FormData();
-    formDataToSend.append('name', formData.name);
-    formDataToSend.append('size', formData.size);
-    formDataToSend.append('image', formData.image);
-    formDataToSend.append('wall_type', formData.wall_type);
-    formDataToSend.append('price', formData.price);
+    if (!imagenProducto) {
+      console.log("Debe seleccionar una imagen");
+      return;
+    }
 
     try {
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const imagenBase64 = event.target.result;
+
+        const nuevoProducto = {
+          name: nombreProducto,
+          price: precioProducto,
+          size: Tamaño,
+          wall_type: pared,
+          image: imagenBase64,
+        };
+
+        if (editMode) {
+          // Si estamos en modo de edición, actualiza el producto existente
+          const { data, error } = await supabase
+            .from('Products')
+            .update(nuevoProducto)
+            .eq('id', editProductData.id);
+
+          if (error) {
+            console.error('Error al actualizar producto en Supabase:', error);
+          } else {
+            console.log('Producto actualizado en Supabase:', data);
+            handleClose();
+          }
+        } else {
+          // Si no estamos en modo de edición, inserta un nuevo producto
+          const { data, error } = await supabase
+            .from('Products')
+            .insert([nuevoProducto]);
+
+          if (error) {
+            console.error('Error al insertar producto en Supabase:', error);
+          } else {
+            console.log('Producto insertado en Supabase:', data);
+            setProductos([...productos, nuevoProducto]);
+            setProductoSeleccionado(nuevoProducto);
+            setIsFormularioOpen(true);
+            handleClose();
+          }
+        }
+      };
+      reader.readAsDataURL(imagenProducto);
+    } catch (error) {
+      console.error("Error al guardar el producto:", error);
+    }
+  };
+
+  const handleDeleteProduct = async (index) => {
+    try {
+      const productIdToDelete = productos[index].id; // Supongamos que el producto tiene un campo 'id'
+
       const { data, error } = await supabase
-        .from('products')
-        .upsert([{ ...formData }]);
-
-      if (error) {
-        console.error('Error adding/updating product:', error);
-      } else {
-        console.log('Product added/updated:', data);
-
-        // Actualizar la lista de productos
-        fetchProducts();
-
-        // Limpiar el formulario después de agregar/editar
-        setFormData({
-          name: '',
-          size: '',
-          image: null,
-          wall_type: '',
-          price: '',
-        });
-      }
-    } catch (error) {
-      console.error('Error adding/updating product:', error);
-    }
-  };
-
-  const handleEdit = (product) => {
-    setFormData({ ...product });
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      const { error } = await supabase
-        .from('products')
+        .from('Products')
         .delete()
-        .eq('id', id);
+        .eq('id', productIdToDelete);
 
       if (error) {
-        console.error('Error deleting product:', error);
+        console.error('Error al eliminar producto de Supabase:', error);
       } else {
-        console.log('Product deleted');
-
-        // Actualizar la lista de productos después de eliminar
-        fetchProducts();
+        console.log('Producto eliminado de Supabase:', data);
+        // Actualiza la lista de productos eliminando el producto correspondiente
+        const updatedProductos = productos.filter((_, i) => i !== index);
+        setProductos(updatedProductos);
       }
     } catch (error) {
-      console.error('Error deleting product:', error);
+      console.error('Error al eliminar producto:', error);
     }
   };
+
+
+  const [editProductData, setEditProductData] = useState({
+    id: '',
+    nombreProducto: '',
+    precioProducto: '',
+    pared: '',
+    imagenProducto: '',
+  });
+
+  const handleEditProduct = (index) => {
+    const productToEdit = productos[index];
+    setEditProductData({
+      id: productToEdit.id,
+      nombreProducto: productToEdit.nombre,
+      precioProducto: productToEdit.precio,
+      pared: productToEdit.pared,
+      imagenProducto: '',
+    });
+    setEditMode(true); // Cambiar el modo a edición
+    setShowForm(true);
+  };
+
+
+
+
+  const handleClose = () => {
+    setEditMode(false); // Salir del modo de edición al cerrar el formulario
+    setShowForm(false);
+  };
+
+
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
+
+
+  useEffect(() => {
+    // Aquí realizas la llamada a Supabase para obtener los productos
+    async function fetchProductos() {
+      const { data, error } = await supabase.from('Products').select('*');
+      if (error) {
+        console.error('Error al obtener productos:', error);
+      } else {
+        setProductos(data);
+      }
+    }
+
+    fetchProductos();
+  }, []);
+
 
   return (
     <Box p={4}>
-      <form onSubmit={handleSubmit}>
-        <VStack spacing={4} align="start">
-          <FormControl>
-            <FormLabel>Name</FormLabel>
-            <Input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-          </FormControl>
-          <FormControl>
-            <FormLabel>Size</FormLabel>
-            <Input
-              type="text"
-              name="size"
-              value={formData.size}
-              onChange={handleInputChange}
-              required
-            />
-          </FormControl>
-          <FormControl>
-            <FormLabel>Image</FormLabel>
-            <Input
-              type="file"
-              accept="image/*"
-              name="image"
-              onChange={handleImageChange}
-            />
-          </FormControl>
-          <FormControl>
-            <FormLabel>Wall Type</FormLabel>
-            <Input
-              type="text"
-              name="wall_type"
-              value={formData.wall_type}
-              onChange={handleInputChange}
-              required
-            />
-          </FormControl>
-          <FormControl>
-            <FormLabel>Price</FormLabel>
-            <Input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              required
-            />
-          </FormControl>
-          <Button type="submit" colorScheme="teal">
-            Save
-          </Button>
-        </VStack>
-      </form>
-      <Text mt={4} fontWeight="bold">
-        Products
-      </Text>
-      <VStack spacing={2} align="start">
-        {products.map((product) => (
-          <Box key={product.id} borderWidth="1px" p={2}>
-            <Text>{product.name}</Text>
-            <Text>{product.size}</Text>
-            <Text>{product.wall_type}</Text>
-            <Text>${product.price}</Text>
-            <Button colorScheme="blue" onClick={() => handleEdit(product)}>
-              Edit
+
+
+
+
+      <Modal isOpen={showForm} onClose={handleClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>
+            {editMode ? 'Editar Producto' : 'Agregar Producto'}
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+              <FormControl>
+                <FormLabel>Nombre del Producto</FormLabel>
+                <Input
+                  type='text'
+                  value={nombreProducto}
+                  onChange={(e) => setNombreProducto(e.target.value)}
+                />
+                <FormHelperText>Indicar nombre del producto.</FormHelperText>
+              </FormControl>
+
+              <FormControl mt={4}>
+                <FormLabel>Precio del Producto</FormLabel>
+                <Input
+                  type='number'
+                  value={precioProducto}
+                  onChange={(e) => setPrecioProducto(e.target.value)}
+                />
+                <FormHelperText>Indicar precio del producto.</FormHelperText>
+              </FormControl>
+
+
+              <FormControl mt={4}>
+                <FormLabel>Tamaño</FormLabel>
+                <Input
+                  type='number'
+                  value={Tamaño}
+                  onChange={(e) => setTamaño(e.target.value)}
+                />
+                <FormHelperText>Indicar tamaño.</FormHelperText>
+              </FormControl>
+
+
+              <FormControl mt={4}>
+                <FormLabel>Tipo de pared</FormLabel>
+                <Input
+                  type='text'
+                  value={pared}
+                  onChange={(e) => setPared(e.target.value)}
+                />
+                <FormHelperText>Indicar Detalle del producto.</FormHelperText>
+              </FormControl>
+
+              <FormControl mt={4}>
+                <FormLabel>Imagen del Producto</FormLabel>
+                <Input
+                  type='file'
+                  accept='image/*'
+                  onChange={(e) => setImagenProducto(e.target.files[0])}
+                />
+                <FormHelperText>
+                  Agregar una imagen representativa del producto.
+                </FormHelperText>
+              </FormControl>
+              <Button type='submit' mt={4} colorScheme='teal' onClick={handleSubmit}>
+                {editMode ? 'Guardar Cambios' : 'Agregar Producto'}
+              </Button>
+            </form>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={handleClose} colorScheme='teal' mr={3}>
+              Cerrar Formulario
             </Button>
-            <Button colorScheme="red" onClick={() => handleDelete(product.id)}>
-              Delete
-            </Button>
-          </Box>
-        ))}
-      </VStack>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <Cards />
+      {/* ... (código existente) */}
+      <Box display="flex" justifyContent="center" mt={4}>
+        <Button onClick={toggleForm} colorScheme='blue'>
+          {showForm ? 'Cerrar Formulario' : 'Abrir Formulario'}
+        </Button>
+      </Box>
     </Box>
   );
 }
