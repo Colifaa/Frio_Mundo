@@ -15,7 +15,7 @@ import {
   ModalFooter,
 } from '@chakra-ui/react';
 import { supabase } from "../../lib/supabaseClient";
-import Cards from './cards';
+import CardsAdmin from './CardsAdmin';
 
 function ProductForm() {
   const [showForm, setShowForm] = useState(false);
@@ -124,19 +124,6 @@ function ProductForm() {
     pared: '',
     imagenProducto: '',
   });
-
-  const handleEditProduct = (index) => {
-    const productToEdit = productos[index];
-    setEditProductData({
-      id: productToEdit.id,
-      nombreProducto: productToEdit.nombre,
-      precioProducto: productToEdit.precio,
-      pared: productToEdit.pared,
-      imagenProducto: '',
-    });
-    setEditMode(true); // Cambiar el modo a edición
-    setShowForm(true);
-  };
 
 
 
@@ -250,11 +237,11 @@ function ProductForm() {
         </ModalContent>
       </Modal>
 
-      <Cards />
+      <CardsAdmin />
       {/* ... (código existente) */}
       <Box display="flex" justifyContent="center" mt={4}>
         <Button onClick={toggleForm} colorScheme='blue'>
-          {showForm ? 'Cerrar Formulario' : 'Abrir Formulario'}
+          {showForm ? 'Cerrar Formulario' : 'Agregar Producto'}
         </Button>
       </Box>
     </Box>
