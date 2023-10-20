@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDisclosure } from "@chakra-ui/react";
-import { supabase } from "./../../lib/supabaseClient";
+import { supabase } from "../../lib/supabaseClient";
 import { Box, Grid, GridItem, Image, Text, Heading, Card, CardBody } from '@chakra-ui/react';
 import * as Components from "../components";
 
