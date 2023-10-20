@@ -1,9 +1,12 @@
-import { Box, Flex, Link, Button, Icon } from "@chakra-ui/react";
+import { Box, Flex, Button, Icon } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
+import Link from 'next/link';
+
 
 const Header = () => {
   return (
-    <Box as="header" backgroundColor="gray.800" color="white" py={3}>
+
+    <Box as="header" backgroundColor="gray.800" color="white" py={3} >
       <Flex justify="space-between" align="center" flexWrap="wrap">
         <Box flex="1">
           <Box maxW="200px">
@@ -17,36 +20,37 @@ const Header = () => {
             <Button
               colorScheme="teal"
               display={["none", "none", "block"]}
-              mr={4}
+              style={{ marginRight: "16px" }}
               leftIcon={<Icon as={FaSearch} />}
             >
               Buscar
             </Button>
-            <Link href="/" mr={4}>
+            <Link href="/" style={{ marginRight: "16px" }}>
               Inicio
             </Link>
-            <Link href="/about" mr={4}>
+            <Link href="/about" style={{ marginRight: "16px" }}>
               Nuestra Empresa
             </Link>
-            <Link href="/product" mr={4}>
-              Categorias
+            <Link href="/product" style={{ marginRight: "16px" }}>
+              Categorías
             </Link>
-            <Link href="/contact">
+            <Link href="/contact" style={{ marginRight: "16px" }}>
               Contacto
             </Link>
             <Button
               colorScheme="teal"
               display={["block", "block", "none"]}
               leftIcon={<Icon as={FaSearch} />}
-              mr={2}
+              mr={8}
             />
-            <Link href="/login" display={["block", "block", "none"]}>
+            <Link href="/login" style={{ marginRight: "16px" }}>
               Iniciar sesión
             </Link>
           </Flex>
         </Box>
       </Flex>
     </Box>
+  
   );
 };
 

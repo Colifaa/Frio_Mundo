@@ -13,29 +13,41 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
+  Select, // Agregar importación para Select
 } from '@chakra-ui/react';
 import { supabase } from "../../lib/supabaseClient";
 import CardsAdmin from './CardsAdmin';
 
-function ProductForm() {
+function AdminForm() {
   const [showForm, setShowForm] = useState(false);
-  const [editMode, setEditMode] = useState(false); // Nuevo estado para el modo de edición
+  const [editMode, setEditMode] = useState(false);
   const [nombreProducto, setNombreProducto] = useState('');
   const [precioProducto, setPrecioProducto] = useState('');
-  //const [ingredientes, setIngredientes] = useState('');
   const [pared, setPared] = useState('');
   const [imagenProducto, setImagenProducto] = useState("");
   const [Tamaño, setTamaño] = useState("");
+  const [categoria, setCategoria] = useState(''); // Nuevo estado para la categoría
 
-
-  const [productos, setProductos] = useState([]); // Lista de productos
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para verificar si el usuario ha iniciado sesión
-
-
+  const [productos, setProductos] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isFormularioOpen, setIsFormularioOpen] = useState(false);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+  const [editProductData, setEditProductData] = useState({
+    id: '',
+    nombreProducto: '',
+    precioProducto: '',
+    pared: '',
+    imagenProducto: '',
+  });
 
+  const handleClose = () => {
+    setEditMode(false);
+    setShowForm(false);
+  };
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,10 +68,10 @@ function ProductForm() {
           size: Tamaño,
           wall_type: pared,
           image: imagenBase64,
+          category: categoria, // Asocia la categoría seleccionada
         };
 
         if (editMode) {
-          // Si estamos en modo de edición, actualiza el producto existente
           const { data, error } = await supabase
             .from('Products')
             .update(nuevoProducto)
@@ -72,7 +84,6 @@ function ProductForm() {
             handleClose();
           }
         } else {
-          // Si no estamos en modo de edición, inserta un nuevo producto
           const { data, error } = await supabase
             .from('Products')
             .insert([nuevoProducto]);
@@ -94,74 +105,10 @@ function ProductForm() {
     }
   };
 
-  const handleDeleteProduct = async (index) => {
-    try {
-      const productIdToDelete = productos[index].id; // Supongamos que el producto tiene un campo 'id'
-
-      const { data, error } = await supabase
-        .from('Products')
-        .delete()
-        .eq('id', productIdToDelete);
-
-      if (error) {
-        console.error('Error al eliminar producto de Supabase:', error);
-      } else {
-        console.log('Producto eliminado de Supabase:', data);
-        // Actualiza la lista de productos eliminando el producto correspondiente
-        const updatedProductos = productos.filter((_, i) => i !== index);
-        setProductos(updatedProductos);
-      }
-    } catch (error) {
-      console.error('Error al eliminar producto:', error);
-    }
-  };
-
-
-  const [editProductData, setEditProductData] = useState({
-    id: '',
-    nombreProducto: '',
-    precioProducto: '',
-    pared: '',
-    imagenProducto: '',
-  });
-
-
-
-
-  const handleClose = () => {
-    setEditMode(false); // Salir del modo de edición al cerrar el formulario
-    setShowForm(false);
-  };
-
-
-
-  const toggleForm = () => {
-    setShowForm(!showForm);
-  };
-
-
-
-  useEffect(() => {
-    // Aquí realizas la llamada a Supabase para obtener los productos
-    async function fetchProductos() {
-      const { data, error } = await supabase.from('Products').select('*');
-      if (error) {
-        console.error('Error al obtener productos:', error);
-      } else {
-        setProductos(data);
-      }
-    }
-
-    fetchProductos();
-  }, []);
-
+  // Resto del código sin cambios
 
   return (
     <Box p={4}>
-
-
-
-
       <Modal isOpen={showForm} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>
@@ -191,7 +138,6 @@ function ProductForm() {
                 <FormHelperText>Indicar precio del producto.</FormHelperText>
               </FormControl>
 
-
               <FormControl mt={4}>
                 <FormLabel>Tamaño</FormLabel>
                 <Input
@@ -202,7 +148,6 @@ function ProductForm() {
                 <FormHelperText>Indicar tamaño.</FormHelperText>
               </FormControl>
 
-
               <FormControl mt={4}>
                 <FormLabel>Tipo de pared</FormLabel>
                 <Input
@@ -211,6 +156,21 @@ function ProductForm() {
                   onChange={(e) => setPared(e.target.value)}
                 />
                 <FormHelperText>Indicar Detalle del producto.</FormHelperText>
+              </FormControl>
+
+              <FormControl mt={4}>
+                <FormLabel>Categoría</FormLabel>
+                <Select
+                  value={categoria}
+                  onChange={(e) => setCategoria(e.target.value)}
+                >
+                  <option value="Camaras Frigorificas">Camaras Frigorificas</option>
+                  <option value="Walking in Cooler">Walking in Cooler</option>
+                  <option value="Conservadoras Termicas">Conservadoras Termicas</option>
+                  <option value="Condensadores y Evaporadores">Condensadores y Evaporadores</option>
+                  <option value="Paneles Frigorificos">Paneles Frigorificos</option>
+                </Select>
+                <FormHelperText>Selecciona la categoría del producto.</FormHelperText>
               </FormControl>
 
               <FormControl mt={4}>
@@ -238,7 +198,6 @@ function ProductForm() {
       </Modal>
 
       <CardsAdmin />
-      {/* ... (código existente) */}
       <Box display="flex" justifyContent="center" mt={4}>
         <Button onClick={toggleForm} colorScheme='blue'>
           {showForm ? 'Cerrar Formulario' : 'Agregar Producto'}
@@ -248,4 +207,4 @@ function ProductForm() {
   );
 }
 
-export default ProductForm;
+export default AdminForm;

@@ -1,9 +1,22 @@
+
 import { Box, Flex, Icon, Link, Text, Input, Button } from "@chakra-ui/react";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
+import ContactForm from "./ContactForm";
 
 const Footer = () => {
   return (
-    <Box as="footer" backgroundColor="gray.800" color="white" py={10}>
+
+    <Box       as="footer"
+    backgroundColor="gray.800"
+    color="white"
+    py={5}
+   
+    bottom="0"
+    left="0"
+    right="0"
+    
+    >
+   
       <Flex justify="space-between" align="center" flexWrap="wrap">
         <Box flex="1" mb={6}>
           <img src="/images/logo1.png" alt="#" className="logo1" />
@@ -63,6 +76,7 @@ const Footer = () => {
           </Link>
         </Text>
       </Box>
+      
     </Box>
   );
 };
