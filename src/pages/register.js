@@ -1,9 +1,9 @@
-import Register from "@/components/Register"
+import * as Components from "../components";
 
 function register () {
 return(
 
-<Register/>
+<Components.Register/>
 
 )
 

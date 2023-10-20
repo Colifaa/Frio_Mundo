@@ -1,6 +1,4 @@
-import ContactForm from "@/components/ContactForm";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import * as Components from "../components";
 
 
 function Contact ( ){
@@ -8,9 +6,9 @@ function Contact ( ){
     return(
     
     <div>
-  <Header/>
-    <ContactForm/>
-    <Footer/>
+  <Components.Header/>
+    <Components.ContactForm/>
+    <Components.Footer/>
       </div>
        
     )

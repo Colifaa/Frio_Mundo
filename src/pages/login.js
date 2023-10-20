@@ -1,9 +1,10 @@
-import Login from "@/components/Login"
+import * as Components from "../components";
+
 
 function login () {
 return(
 
-<Login/>
+<Components.Login/>
 
 )
 

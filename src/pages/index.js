@@ -1,18 +1,13 @@
-import AboutUs from "@/components/AboutUs";
-import Cards from "@/components/Cards";
-import Carousel from "@/components/Carousel";
-import ContactForm from "@/components/ContactForm";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import * as Components from "../components";
 import { Box, Container, Heading, Text, Button, Image, Flex, Input } from "@chakra-ui/react";
 
 const Home = () => {
   return (
     <>
-  <Header/>
-<Carousel/>
+  <Components.Header/>
+<Components.Carousel/>
    
-    <AboutUs/>
+    <Components.AboutUs/>
      
 
       {/* Delivery */}
@@ -34,7 +29,7 @@ const Home = () => {
 
       {/* Products */}
       <Box className="products" py={12}>
-      <Cards/>
+      <Components.Cards/>
       </Box>
 
    
@@ -46,7 +41,7 @@ const Home = () => {
 
       </Box>
 
- <Footer/>
+ <Components.Footer/>
     </>
   );
 };

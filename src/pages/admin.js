@@ -1,12 +1,11 @@
-import ProductCategories from '@/components/ProductCategories'
-import AdminForm from '@/components/adminForm'
+import * as Components from "../components";
 import React from 'react'
 
 export default function admin() {
   return (
     <div>
-      <AdminForm/>
-      <ProductCategories/>
+      <Components.AdminForm/>
+      <Components.ProductCategories/>
     </div>
   )
 }
