@@ -31,7 +31,7 @@ const Header = () => {
             <Link href="/about" style={{ marginRight: "16px" }}>
               Nuestra Empresa
             </Link>
-            <Link href="/product" style={{ marginRight: "16px" }}>
+            <Link href="/categories" style={{ marginRight: "16px" }}>
               Categorías
             </Link>
             <Link href="/contact" style={{ marginRight: "16px" }}>

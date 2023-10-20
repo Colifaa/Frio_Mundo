@@ -9,3 +9,7 @@ export { default as Header } from "./Header";
 export { default as Login } from "./Login";
 export { default as ProductCategories } from "./ProductCategories";
 export { default as Register } from "./Register";
+export { default as CardsCategories } from "./CardsCategories";
+export { default as Cart } from "./Cart";
+
+
