@@ -34,7 +34,7 @@ const Carousel = () => {
 
   return (
     
-    <Box bgImage="bg6.png" height="720px" width="1980x">
+    <Box bgImage="bg6.png" height="722px" width="1980x">
       <Flex>
         <Box flex="1">
           <Box className="text-bg">
@@ -60,6 +60,6 @@ const Carousel = () => {
     </Box>
   );
 };
+  
 
-export default Carousel;
-
+export default Carousel;   
