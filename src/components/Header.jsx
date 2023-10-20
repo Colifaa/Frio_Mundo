@@ -6,12 +6,12 @@ import Link from 'next/link';
 const Header = () => {
   return (
 
-    <Box as="header" backgroundColor="gray.800" color="white" py={3} >
+    <Box as="header" bgImage="chico.png" height="80px" width="1980x">
       <Flex justify="space-between" align="center" flexWrap="wrap">
         <Box flex="1">
           <Box maxW="200px">
             <Link href="/">
-              <img src="/images/LOGOBIEN2.png" alt="Logo" />
+              <img src="LOGOBIEN.png" alt="Logo" />
             </Link>
           </Box>
         </Box>
