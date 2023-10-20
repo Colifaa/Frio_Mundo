@@ -37,7 +37,7 @@ const Home = () => {
       {/* Contact */}
       <Box className="contact" py={12}>
           <Heading fontSize="3xl" mb={8}>Contacta ahora</Heading>
-          <ContactForm/>
+          <Components.ContactForm/>
 
       </Box>
 
