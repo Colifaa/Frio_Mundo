@@ -4,14 +4,14 @@ import { useState } from "react";
 const Carousel = () => {
   const carouselItems = [
     {
-      imageSrc: "mono.jpg",
+      imageSrc: "primera1.png",
       title: "CAMARAS FRIGORIFICAS",
       subtitle: "Accesorios",
       info: "hola que tal soy el chico de las poesias",
     },
     {
-      imageSrc: "image2.jpg",
-      title: "CAMARAS FRIGS",
+      imageSrc: "carousel4.png",
+      title: "Walking In Cooler",
       subtitle: "Accesorios",
       info: "tu fiel admirador",
     },
@@ -33,7 +33,8 @@ const Carousel = () => {
   };
 
   return (
-    <Box>
+    
+    <Box bgImage="bg6.png" height="722px" width="1980x">
       <Flex>
         <Box flex="1">
           <Box className="text-bg">
@@ -59,6 +60,6 @@ const Carousel = () => {
     </Box>
   );
 };
+  
 
-export default Carousel;
-
+export default Carousel;   
