@@ -1,23 +1,29 @@
-
 import { Box, Flex, Icon, Link, Text, Input, Button } from "@chakra-ui/react";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import ContactForm from "./ContactForm";
 
 const Footer = () => {
   return (
-
-    <Box       as="footer"
-    backgroundColor="gray.800"
-    color="white"
-    py={5}
-   
-    bottom="0"
-    left="0"
-    right="0"
-    
+    <Box
+      as="footer"
+      backgroundColor="#000014"
+      color="white"
+      py={5}
+      position="initial"
+      bottom="0"
+      left="0"
+      right="0"
+      display="flex"
+      justifyContent="center"
     >
-   
-      <Flex justify="space-between" align="center" flexWrap="wrap">
+      <Flex
+        maxWidth="1200px"
+        width="100%"
+        justify="space-between"
+        align="center"
+        flexWrap="wrap"
+        padding="0 20px"
+      >
         <Box flex="1" mb={6}>
           <img src="circulo2.png" height="300px" width="300px" alt="#" className="logo1" />
           <Flex mt={4} justify="center">
@@ -43,13 +49,14 @@ const Footer = () => {
             Contacto
           </Text>
           <Text>
-          +54 260 xxxxxx example@gmail.com
+            +54 260 xxxxxx example@gmail.com
           </Text>
         </Box>
         <Box flex="1" mb={6}>
           <form className="bottom_form">
             <Text fontSize="xl" mb={2}>
-              Para mas info
+              Para más info
+              Política de Privacidad, Política de Cookies, Aviso Legal
             </Text>
             <Input
               className="enter"
@@ -62,15 +69,6 @@ const Footer = () => {
           </form>
         </Box>
       </Flex>
-      <Box borderTop="1px solid white" mt={8} pt={4}>
-        <Text fontSize="sm">
-        © 2023 Todos los derechos reservados. Diseñado por 
-          <Link href="https://www.instagram.com/web_desweby/" color="teal.500">
-             DESWEBY
-          </Link>
-        </Text>
-      </Box>
-      
     </Box>
   );
 };

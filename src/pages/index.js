@@ -15,7 +15,7 @@ const Home = () => {
       bgImage="url('PUBLI.png')"
       backgroundSize="cover"
       backgroundPosition="center"
-      minHeight="400px"
+      minHeight="500px"
       width="100%" // Ancho del 100% para que se adapte al ancho de la pantalla
     >
       <Container maxW="container.lg">

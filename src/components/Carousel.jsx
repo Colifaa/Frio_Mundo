@@ -1,7 +1,6 @@
 import { Box, Flex, Text, Heading, Button, IconButton } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"; // Importar iconos de flecha
-
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 const Carousel = () => {
   const carouselItems = [
@@ -23,7 +22,6 @@ const Carousel = () => {
       subtitle: "Accesorios",
       info: "Descripción del nuevo producto",
     },
-    // Agregar más objetos para representar más diapositivas aquí
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -40,35 +38,34 @@ const Carousel = () => {
     );
   };
 
-  // Lógica para cambiar automáticamente las diapositivas
   useEffect(() => {
-    const interval = setInterval(handleNextSlide, 5000); // Cambia la diapositiva cada 5 segundos
+    const interval = setInterval(handleNextSlide, 5000);
 
     return () => {
       clearInterval(interval);
     };
   }, [activeIndex]);
 
-
   return (
     <Box
       bgImage="bg6.png"
-      height="773px" // Ajusta la altura de la imagen
-      width="1900"
-      backgroundSize="cover" // Ajusta el tamaño de la imagen de fondo
+      height="844px"
+      width="100%" // Cambia a 100% para ocupar todo el ancho disponible
+      backgroundSize="cover"
       display="flex"
       alignItems="center"
       justifyContent="center"
-      position="relative" // Añade esta línea para establecer la posición relativa
-      
+      position="relative"
     >
-      <Flex>
+      <Flex maxWidth="1200px" width="100%" padding="0 20px" alignItems="center">
         <Box flex="1">
-          <Text fontSize="xl" color="teal.500">
+          <Text fontSize="3xl" color="teal.500"> {/* Aumenta el tamaño del título */}
             {carouselItems[activeIndex].title}
           </Text>
-          <Heading fontSize="4xl">{carouselItems[activeIndex].subtitle}</Heading>
-          <Text>{carouselItems[activeIndex].info}</Text>
+          <Heading fontSize="6xl" mt={2}> {/* Aumenta el tamaño del subtítulo */}
+            {carouselItems[activeIndex].subtitle}
+          </Heading>
+          <Text fontSize="2xl" mt={4}>{carouselItems[activeIndex].info}</Text> {/* Aumenta el tamaño del texto */}
           <Button colorScheme="teal" mt={4}>
             Ver más
           </Button>
@@ -81,8 +78,8 @@ const Carousel = () => {
             src={carouselItems[activeIndex].imageSrc}
             alt="#"
             style={{
-              width: "100%", // Ajusta el ancho de la imagen
-              maxHeight: "400px", // Ajusta la altura máxima
+              width: "100%",
+              maxHeight: "600px", // Aumenta la altura máxima de la imagen
               borderRadius: "5px",
             }}
           />
@@ -92,8 +89,8 @@ const Carousel = () => {
         icon={<ChevronLeftIcon />}
         position="absolute"
         left="5%"
-        top="50%" // Cambia el valor top a 50%
-        transform="translateY(-50%)" // Ajusta la posición vertical
+        top="50%"
+        transform="translateY(-50%)"
         fontSize="32px"
         onClick={handlePrevSlide}
       />
@@ -101,8 +98,8 @@ const Carousel = () => {
         icon={<ChevronRightIcon />}
         position="absolute"
         right="5%"
-        top="50%" // Cambia el valor top a 50%
-        transform="translateY(-50%)" // Ajusta la posición vertical
+        top="50%"
+        transform="translateY(-50%)"
         fontSize="32px"
         onClick={handleNextSlide}
       />

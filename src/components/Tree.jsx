@@ -5,7 +5,7 @@ const Tree = () => {
     <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={8}>
       <GridItem>
         <Box
-          border="1px solid blue"
+          border="1px solid #0059e2"
           borderRadius="20px"
           padding="16px"
           textAlign="center"
@@ -18,7 +18,7 @@ const Tree = () => {
       </GridItem>
       <GridItem>
         <Box
-          border="1px solid blue"
+          border="1px solid #0059e2"
           borderRadius="20px"
           padding="16px"
           textAlign="center"
@@ -31,7 +31,7 @@ const Tree = () => {
       </GridItem>
       <GridItem>
         <Box
-          border="1px solid blue"
+          border="1px solid #0059e2"
           borderRadius="20px"
           padding="16px"
           textAlign="center"
