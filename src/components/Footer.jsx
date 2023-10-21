@@ -19,47 +19,41 @@ const Footer = () => {
    
       <Flex justify="space-between" align="center" flexWrap="wrap">
         <Box flex="1" mb={6}>
-          <img src="/images/logo1.png" alt="#" className="logo1" />
-          <Flex mt={4}>
-            <Link href="#" mr={4}>
+          <img src="circulo2.png" height="300px" width="300px" alt="#" className="logo1" />
+          <Flex mt={4} justify="center">
+            <Link href="https://www.facebook.com/friomundo.ok" mr={4}>
               <Icon as={FaFacebook} fontSize="20px" />
             </Link>
-            <Link href="#" mr={4}>
-              <Icon as={FaTwitter} fontSize="20px" />
-            </Link>
-            <Link href="#" mr={4}>
-              <Icon as={FaLinkedin} fontSize="20px" />
-            </Link>
-            <Link href="#">
+            <Link href="https://www.instagram.com/friomundo.ok/">
               <Icon as={FaInstagram} fontSize="20px" />
             </Link>
           </Flex>
         </Box>
         <Box flex="1" mb={6}>
           <Text fontSize="xl" mb={2}>
-            About Us
+            Horarios de Atencion
           </Text>
           <Text>
-            dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam,
-            quisdotempor incididunt r
+            Lunes a Viernes
+            09Hrs a 21Hrs
           </Text>
         </Box>
         <Box flex="1" mb={6}>
           <Text fontSize="xl" mb={2}>
-            Contact Us
+            Contacto
           </Text>
           <Text>
-            dolor sit amet, consectetur magna aliqua. quisdotempor incididunt ut e
+          +54 260 xxxxxx example@gmail.com
           </Text>
         </Box>
         <Box flex="1" mb={6}>
           <form className="bottom_form">
             <Text fontSize="xl" mb={2}>
-              Newsletter
+              Para mas info
             </Text>
             <Input
               className="enter"
-              placeholder="Enter your email"
+              placeholder="Ingresa tu email"
               type="email"
               name="email"
               mb={2}
@@ -70,9 +64,9 @@ const Footer = () => {
       </Flex>
       <Box borderTop="1px solid white" mt={8} pt={4}>
         <Text fontSize="sm">
-          © 2019 All Rights Reserved. Design by{" "}
-          <Link href="https://html.design/" color="teal.500">
-            Free Html Templates
+        © 2023 Todos los derechos reservados. Diseñado por 
+          <Link href="https://www.instagram.com/web_desweby/" color="teal.500">
+             DESWEBY
           </Link>
         </Text>
       </Box>

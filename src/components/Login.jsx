@@ -45,10 +45,10 @@ const Login = () => {
         maxW="400px"
       >
         <Flex justifyContent="center" alignItems="center" mb={4}>
-          <Image width="100px" height="100px" src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt="Twitter Logo" />
+          <Image width="100px" height="100px" src="circulo.png" />
         </Flex>
         <Text className="mt-4" fontSize="2xl" fontWeight="bold">
-          Twitter
+          FRIO MUNDO
         </Text>
         <form className="p-3 mt-3">
           <Flex align="center" className="form-field">
@@ -77,12 +77,12 @@ const Login = () => {
             />
           </Flex>
           <Button className="btn mt-3" colorScheme="teal" onClick={handleLogin}>
-            Login
+            Iniciar
           </Button>
         </form>
         {error && <Text color="red">{error}</Text>}
         <Text className="fs-6 mt-2">
-          <Link href="#">Forget password?</Link> or <Link href="#">Sign up</Link>
+          <Link href="#">Olvidaste la password?</Link> or <Link href="#">Sign up</Link>
         </Text>
       </Box>
     </Flex>
