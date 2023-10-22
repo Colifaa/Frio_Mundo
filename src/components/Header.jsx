@@ -6,7 +6,7 @@ import Link from 'next/link';
 const Header = () => {
   return (
 
-    <Box as="header" bgImage="chico.png" height="80px" width="1980x">
+    <Box as="header" bgImage="chico.png" height="111px" width="1900x">
       <Flex justify="space-between" align="center" flexWrap="wrap">
         <Box flex="1">
           <Box maxW="200px">

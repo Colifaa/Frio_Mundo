@@ -1,5 +1,6 @@
-import { Box, Flex, Text, Heading, Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Flex, Text, Heading, Button, IconButton } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 const Carousel = () => {
   const carouselItems = [
@@ -15,7 +16,12 @@ const Carousel = () => {
       subtitle: "Accesorios",
       info: "tu fiel admirador",
     },
-    // Agregar más objetos para representar más diapositivas aquí
+    {
+      imageSrc: "conserva.png",
+      title: "Nuevo Producto",
+      subtitle: "Accesorios",
+      info: "Descripción del nuevo producto",
+    },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -32,34 +38,73 @@ const Carousel = () => {
     );
   };
 
+  useEffect(() => {
+    const interval = setInterval(handleNextSlide, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [activeIndex]);
+
   return (
-    
-    <Box bgImage="bg6.png" height="722px" width="1980x">
-      <Flex>
+    <Box
+      bgImage="bg6.png"
+      height="844px"
+      width="100%" // Cambia a 100% para ocupar todo el ancho disponible
+      backgroundSize="cover"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      position="relative"
+    >
+      <Flex maxWidth="1200px" width="100%" padding="0 20px" alignItems="center">
         <Box flex="1">
-          <Box className="text-bg">
-            <Text fontSize="xl" color="teal.500">
-              {carouselItems[activeIndex].title}
-            </Text>
-            <Heading fontSize="4xl">{carouselItems[activeIndex].subtitle}</Heading>
-            <Text>{carouselItems[activeIndex].info}</Text>
-            <Button colorScheme="teal" mt={4}>
-              Ver más
-            </Button>
-            <Button colorScheme="teal" ml={2}>
-              Contacto
-            </Button>
-          </Box>
+          <Text fontSize="3xl" color="teal.500"> {/* Aumenta el tamaño del título */}
+            {carouselItems[activeIndex].title}
+          </Text>
+          <Heading fontSize="6xl" mt={2}> {/* Aumenta el tamaño del subtítulo */}
+            {carouselItems[activeIndex].subtitle}
+          </Heading>
+          <Text fontSize="2xl" mt={4}>{carouselItems[activeIndex].info}</Text> {/* Aumenta el tamaño del texto */}
+          <Button colorScheme="teal" mt={4}>
+            Ver más
+          </Button>
+          <Button colorScheme="teal" ml={2}>
+            Contacto
+          </Button>
         </Box>
-        <Box flex="1" >
-          <img src={carouselItems[activeIndex].imageSrc} alt="#" style={{ width: "50%", maxHeight: "250px", borderRadius: "50%" }} />
+        <Box flex="1">
+          <img
+            src={carouselItems[activeIndex].imageSrc}
+            alt="#"
+            style={{
+              width: "100%",
+              maxHeight: "600px", // Aumenta la altura máxima de la imagen
+              borderRadius: "5px",
+            }}
+          />
         </Box>
       </Flex>
-      <Button onClick={handlePrevSlide}>Anterior</Button>
-      <Button onClick={handleNextSlide}>Siguiente</Button>
+      <IconButton
+        icon={<ChevronLeftIcon />}
+        position="absolute"
+        left="5%"
+        top="50%"
+        transform="translateY(-50%)"
+        fontSize="32px"
+        onClick={handlePrevSlide}
+      />
+      <IconButton
+        icon={<ChevronRightIcon />}
+        position="absolute"
+        right="5%"
+        top="50%"
+        transform="translateY(-50%)"
+        fontSize="32px"
+        onClick={handleNextSlide}
+      />
     </Box>
   );
 };
-  
 
-export default Carousel;   
+export default Carousel;
