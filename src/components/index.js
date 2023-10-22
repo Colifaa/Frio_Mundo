@@ -11,5 +11,7 @@ export { default as ProductCategories } from "./ProductCategories";
 export { default as Register } from "./Register";
 export { default as CardsCategories } from "./CardsCategories";
 export { default as Cart } from "./Cart";
-
+export { default as Tree } from "./Tree"
+export { default as Nosotros} from "./Nosotros"
+export { default as WhatsAppForm} from "./WhatsAppForm"
 
