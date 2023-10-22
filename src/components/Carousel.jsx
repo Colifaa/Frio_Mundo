@@ -6,20 +6,32 @@ const Carousel = () => {
   const carouselItems = [
     {
       imageSrc: "primera1.png",
-      title: "CAMARAS FRIGORIFICAS",
-      subtitle: "Accesorios",
-      info: "hola que tal soy el chico de las poesias",
+      title: "Camaras ",
+      subtitle: "FRIGORIFICAS",
+      info: "Info",
     },
     {
       imageSrc: "carousel4.png",
       title: "Walking In Cooler",
-      subtitle: "Accesorios",
-      info: "tu fiel admirador",
+      subtitle: "IN COOLER",
+      info: "Info",
+    },
+    {
+      imageSrc: "carousel32.png",
+      title: "Condensadores y",
+      subtitle: "EVAPORADORES",
+      info: "Descripción del nuevo producto",
     },
     {
       imageSrc: "conserva.png",
-      title: "Nuevo Producto",
-      subtitle: "Accesorios",
+      title: "Conservadora",
+      subtitle: "TERMICA",
+      info: "Descripción del nuevo producto",
+    },
+    {
+      imageSrc: "paneles.png",
+      title: "Paneles",
+      subtitle: "FRIGORIFICOS",
       info: "Descripción del nuevo producto",
     },
   ];
@@ -49,29 +61,32 @@ const Carousel = () => {
   return (
     <Box
       bgImage="bg6.png"
-      height="844px"
-      width="100%" // Cambia a 100% para ocupar todo el ancho disponible
+      height={{ base: "auto", md: "844px" }}
+      width="100%"
       backgroundSize="cover"
       display="flex"
       alignItems="center"
       justifyContent="center"
       position="relative"
+      fontFamily="Manrope, sans-serif"
     >
-      <Flex maxWidth="1200px" width="100%" padding="0 20px" alignItems="center">
+      <Flex
+        flexDir={{ base: "column", md: "row" }}
+        maxWidth="1200px"
+        width="100%"
+        padding="0 20px"
+        alignItems="center"
+      >
         <Box flex="1">
-          <Text fontSize="3xl" color="teal.500"> {/* Aumenta el tamaño del título */}
+          <Text fontSize="3xl" color="white">
             {carouselItems[activeIndex].title}
           </Text>
-          <Heading fontSize="6xl" mt={2}> {/* Aumenta el tamaño del subtítulo */}
+          <Heading color="white" fontSize="6xl" mt={2}>
             {carouselItems[activeIndex].subtitle}
           </Heading>
-          <Text fontSize="2xl" mt={4}>{carouselItems[activeIndex].info}</Text> {/* Aumenta el tamaño del texto */}
-          <Button colorScheme="teal" mt={4}>
-            Ver más
-          </Button>
-          <Button colorScheme="teal" ml={2}>
-            Contacto
-          </Button>
+          <Text color="white" fontSize="2xl" mt={4}>
+            {carouselItems[activeIndex].info}
+          </Text>
         </Box>
         <Box flex="1">
           <img
@@ -79,7 +94,7 @@ const Carousel = () => {
             alt="#"
             style={{
               width: "100%",
-              maxHeight: "600px", // Aumenta la altura máxima de la imagen
+              maxHeight: "600px",
               borderRadius: "5px",
             }}
           />
