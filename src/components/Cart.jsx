@@ -31,13 +31,7 @@ const Cart = ({ items, onRemoveItem, onCheckout }) => {
           </Box>
         ))
       )}
-      {items && items.length > 0 && (
-        <Flex justifyContent="center">
-          <Button mt={4} colorScheme='blue' bgColor="#FF5733" onClick={onCheckout}>
-            Realizar Compra
-          </Button>
-        </Flex>
-      )}
+    
     </Box>
   );
 };
