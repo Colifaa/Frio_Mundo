@@ -13,7 +13,7 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  Select, // Agregar importación para Select
+  Select,
 } from '@chakra-ui/react';
 import { supabase } from "../../lib/supabaseClient";
 import CardsAdmin from './CardsAdmin';
@@ -25,8 +25,8 @@ function AdminForm() {
   const [precioProducto, setPrecioProducto] = useState('');
   const [pared, setPared] = useState('');
   const [imagenProducto, setImagenProducto] = useState("");
-  const [Tamaño, setTamaño] = useState("");
-  const [categoria, setCategoria] = useState(''); // Nuevo estado para la categoría
+  const [Tamaño, setTamaño] = useState('');
+  const [categoria, setCategoria] = useState(''); // Estado para el nombre de la categoría
 
   const [productos, setProductos] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -68,7 +68,7 @@ function AdminForm() {
           size: Tamaño,
           wall_type: pared,
           image: imagenBase64,
-          category: categoria, // Asocia la categoría seleccionada
+          category: categoria, // Asocia la categoría ingresada
         };
 
         if (editMode) {
@@ -103,7 +103,7 @@ function AdminForm() {
     } catch (error) {
       console.error("Error al guardar el producto:", error);
     }
-  };
+  }
 
   // Resto del código sin cambios
 
@@ -160,17 +160,12 @@ function AdminForm() {
 
               <FormControl mt={4}>
                 <FormLabel>Categoría</FormLabel>
-                <Select
+                <Input
+                  type='text'
                   value={categoria}
                   onChange={(e) => setCategoria(e.target.value)}
-                >
-                  <option value="Camaras Frigorificas">Camaras Frigorificas</option>
-                  <option value="Walking in Cooler">Walking in Cooler</option>
-                  <option value="Conservadoras Termicas">Conservadoras Termicas</option>
-                  <option value="Condensadores y Evaporadores">Condensadores y Evaporadores</option>
-                  <option value="Paneles Frigorificos">Paneles Frigorificos</option>
-                </Select>
-                <FormHelperText>Selecciona la categoría del producto.</FormHelperText>
+                />
+                <FormHelperText>Ingresa el nombre de la categoría.</FormHelperText>
               </FormControl>
 
               <FormControl mt={4}>
