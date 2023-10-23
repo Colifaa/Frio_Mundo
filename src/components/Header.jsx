@@ -1,30 +1,31 @@
-import { Box, Flex, Button, Icon } from "@chakra-ui/react";
-import { FaSearch } from "react-icons/fa";
-import Link from 'next/link';
-
+import { Box, Flex, Button, Icon, HStack } from "@chakra-ui/react";
+import { FaSearch, FaBars } from "react-icons/fa";
+import { useState } from "react";
+import Link from "next/link";
 
 const Header = () => {
-  return (
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    <Box as="header" bgImage="chico.png" height="111px" width="1900x">
-      <Flex justify="space-between" align="center" flexWrap="wrap">
-        <Box flex="1">
-          <Box maxW="200px">
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  return (
+    <Box as="header" bgImage="chico.png" height="111px" width="100%" position="relative">
+      <Flex justify="space-between" align="center" flexWrap="wrap" position="relative">
+        <Box flex={{ base: 1, sm: 1, md: 2 }}>
+          <Box maxW={{ base: "100px", sm: "200px" }}>
             <Link href="/">
               <img src="LOGOBIEN.png" alt="Logo" />
             </Link>
           </Box>
         </Box>
-        <Box flex="1">
-          <Flex align="center">
-            <Button
-              colorScheme="teal"
-              display={["none", "none", "block"]}
-              style={{ marginRight: "16px" }}
-              leftIcon={<Icon as={FaSearch} />}
-            >
-              Buscar
-            </Button>
+        <Box flex={{ base: 1, sm: 1, md: 2 }}>
+          <HStack
+            spacing={4}
+            align="center"
+            display={{ base: "none", md: "flex" }}
+          >
             <Link href="/" style={{ marginRight: "16px" }}>
               Inicio
             </Link>
@@ -37,20 +38,55 @@ const Header = () => {
             <Link href="/contact" style={{ marginRight: "16px" }}>
               Contacto
             </Link>
-            <Button
-              colorScheme="teal"
-              display={["block", "block", "none"]}
-              leftIcon={<Icon as={FaSearch} />}
-              mr={8}
-            />
-            <Link href="/login" style={{ marginRight: "16px" }}>
-              Iniciar sesión
-            </Link>
-          </Flex>
+          </HStack>
+          {/* Botón de búsqueda */}
+          <Button
+            colorScheme="teal"
+            display={{ base: "none", md: "block" }} // Muestra el botón en pantallas medianas y grandes
+            style={{ marginRight: "16px" }}
+            leftIcon={<Icon as={FaSearch} />}
+          >
+            Buscar
+          </Button>
+          {/* Botón de hamburguesa */}
+          <Button
+            colorScheme="teal"
+            display={{ base: "block", md: "none" }}
+            leftIcon={<Icon as={FaBars} />}
+            onClick={toggleMenu}
+            zIndex={10}
+          />
         </Box>
       </Flex>
+      {menuOpen && (
+        <Box
+          bg="white"
+          display={{ base: "block", md: "none" }}
+          p={4}
+          boxShadow="lg"
+          zIndex={9}
+          position="absolute"
+          top="60px"
+          right="0"
+        >
+          <Link href="/" style={{ display: "block", marginBottom: "8px" }}>
+            Inicio
+          </Link>
+          <Link href="/about" style={{ display: "block", marginBottom: "8px" }}>
+            Nuestra Empresa
+          </Link>
+          <Link
+            href="/categories"
+            style={{ display: "block", marginBottom: "8px" }}
+          >
+            Categorías
+          </Link>
+          <Link href="/contact" style={{ display: "block", marginBottom: "8px" }}>
+            Contacto
+          </Link>
+        </Box>
+      )}
     </Box>
-  
   );
 };
 
