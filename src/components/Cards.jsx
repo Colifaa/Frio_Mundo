@@ -3,6 +3,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import { supabase } from "../../lib/supabaseClient";
 import { Box, Grid, GridItem, Image, Text, Heading, Card, CardBody } from '@chakra-ui/react';
 import * as Components from ".";
+import Link from 'next/link';
 
 export default function Cards() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -39,6 +40,7 @@ export default function Cards() {
     <Grid templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' }} gap={4} justifyContent="center">
     {productos?.map((producto, index) => (
       <GridItem key={index} display="flex" flexDirection="column" alignItems="center">
+          <Link href="/categories">
         <Card maxW="300px" mx="auto" bgColor="#000000" color="#FFFFFF" alignItems="center">
           <CardBody>
             <Image
@@ -60,6 +62,7 @@ export default function Cards() {
             </Text>
           </CardBody>
         </Card>
+        </Link>
       </GridItem>
     ))}
   </Grid>

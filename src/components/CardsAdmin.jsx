@@ -103,6 +103,9 @@ function CardsAdmin() {
               <Text color="#FF5733" fontSize="xl">
                 {producto.size}
               </Text>
+              <Text color="#FF5733" fontSize="xl">
+                {producto.category}
+              </Text>
 
               <Text color="#FF5733" fontSize="xl">
                 ${producto.price}
@@ -112,6 +115,7 @@ function CardsAdmin() {
               Borrar
             </Button>
           </Card>
+          
         </Box>
       ))}
     </Grid>
