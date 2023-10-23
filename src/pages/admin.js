@@ -4,8 +4,9 @@ import React from 'react'
 export default function admin() {
   return (
     <div>
+      <Components.Header/>
       <Components.AdminForm/>
-      <Components.ProductCategories/>
+      <Components.Footer/>
     </div>
   )
 }
