@@ -11,21 +11,9 @@ const Home = () => {
      
 
 {/* Delivery */}
-<Box
-      bgImage="url('PUBLI.png')"
-      backgroundSize="cover"
-      backgroundPosition="center"
-      minHeight="500px"
-      width="100%" // Ancho del 100% para que se adapte al ancho de la pantalla
-    >
-      <Container maxW="container.lg">
-        <Flex flexWrap={{ base: 'wrap', md: 'nowrap' }} justifyContent="space-between" alignItems="center">
-          <Box flex="1">
-          </Box>
 
-        </Flex>
-      </Container>
-    </Box>
+<Components.Carrodeli/>
+
 
       {/* Products */}
       <Box className="products" py={12} bgImage="bg6.png" bgSize="cover"  bgRepeat="no-repeat">
