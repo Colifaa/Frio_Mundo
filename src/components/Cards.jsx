@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDisclosure } from "@chakra-ui/react";
 import { supabase } from "../../lib/supabaseClient";
-import { Box, Grid, GridItem, Image, Text, Heading, Card, CardBody } from '@chakra-ui/react';
+import { Button, CardFooter, Box, Grid, GridItem, Image, Text, Heading, Card, CardBody } from '@chakra-ui/react';
 import * as Components from ".";
 import Link from 'next/link';
 
@@ -37,30 +37,34 @@ export default function Cards() {
   }, []);
 
   return (
-    <Grid templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' }} gap={4} justifyContent="center">
+    <Grid templateColumns={{ base: '1fr', sm: 'repeat(3, 1fr)', md: 'repeat(3, 1fr)' }} gap={4} justifyContent="center" >
     {productos?.map((producto, index) => (
       <GridItem key={index} display="flex" flexDirection="column" alignItems="center">
-          <Link href="/categories">
+ <Link href={`/category/${producto.category}`}>
         <Card maxW="300px" mx="auto" bgColor="#000000" color="#FFFFFF" alignItems="center">
           <CardBody>
             <Image
+             objectFit="cover"
               src={producto.image}
               alt={`Imagen de ${producto.name}`}
-              borderRadius="lg"
+              borderRadius='full'
               border="4px"
-              borderColor="#FF5733"
+              borderColor="blue.500"
               boxSize="250px"
+               boxShadow="md" 
             />
-            <Text fontSize={['xs', 'sm', 'md', 'lg', 'xl']} fontWeight="light" fontFamily="Georgia">
-              {producto.wall_type}
-            </Text>
-            <Heading size="md" color="#A7414C">
-              {producto.name}
-            </Heading>
-            <Text color="#FF5733" fontSize="xl">
-              ${producto.price}
-            </Text>
           </CardBody>
+          <CardFooter
+    justify='space-between'
+    flexWrap='wrap'
+    sx={{
+      '& > button': {
+        minW: '136px',
+      },
+    }}
+  >
+{producto.category}
+  </CardFooter>
         </Card>
         </Link>
       </GridItem>

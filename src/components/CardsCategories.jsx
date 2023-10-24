@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Flex,Box, Grid, Card, CardBody, Image, Text, Heading, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from '@chakra-ui/react';
+import { Flex, Box, Grid, Card, CardBody, Image, Text, Heading, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from '@chakra-ui/react';
 import { supabase } from '../../lib/supabaseClient';
-import * as Components from "../components";
-
+import * as Components from '../components';
+import Link from 'next/link';
 
 function CardsCategories() {
   const [productos, setProductos] = useState([]);
@@ -38,6 +38,7 @@ function CardsCategories() {
   const filterProductsByCategory = (category) => {
     setSelectedCategory(category);
   };
+
   const handleAddToCart = async (product) => {
     // Verifica si el producto ya está en el carrito
     const existingCartItem = carrito.find((item) => item.id === product.id);
@@ -56,6 +57,7 @@ function CardsCategories() {
       setCarrito([...carrito, newCartItem]);
     }
   };
+  
   useEffect(() => {
     getProductos();
   }, []);
@@ -65,15 +67,15 @@ function CardsCategories() {
       <h2>Categorías Disponibles</h2>
       <ul>
         <li key="all">
-          <a href="#" onClick={() => filterProductsByCategory(null)}>
+        <Link href={`/category`}>
             Todos
-          </a>
+          </Link>
         </li>
         {categories.map(category => (
           <li key={category}>
-            <a href="#" onClick={() => filterProductsByCategory(category)}>
+          <Link href={`/category/${category}`}>
               {category}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -114,31 +116,37 @@ function CardsCategories() {
             </Box>
           ))}
       </Grid>
-       {/* Agrega el componente de carrito aquí */}
-       <Components.Cart items={carrito} onRemoveItem={(itemId) => {
-        // Lógica para eliminar un elemento del carrito
-        const updatedCart = carrito.filter((item) => item.id !== itemId);
-        setCarrito(updatedCart);
-      }} onCheckout={() => {
-        // Lógica para procesar la compra
-        console.log("Compra realizada");
-      }} />
-    <Flex justifyContent="center"> 
-<Button onClick={onOpen} mt={4} colorScheme='blue' bgColor="#FF5733" >Realziar Compra</Button>
-</Flex>
-<Drawer isOpen={isOpen} placement="right" onClose={onClose}>
-  <DrawerOverlay>
-    <DrawerContent>
-      <DrawerCloseButton />
-      <DrawerHeader>Realizar Compra</DrawerHeader>
-      <DrawerBody>
-        <Components.WhatsAppForm cartItems={carrito} />
-      </DrawerBody>
-    </DrawerContent>
-  </DrawerOverlay>
-</Drawer>
-</Box>
-   
+
+      {/* Agrega el componente de carrito aquí */}
+      <Components.Cart
+        items={carrito}
+        onRemoveItem={(itemId) => {
+          // Lógica para eliminar un elemento del carrito
+          const updatedCart = carrito.filter((item) => item.id !== itemId);
+          setCarrito(updatedCart);
+        }}
+        onCheckout={() => {
+          // Lógica para procesar la compra
+          console.log('Compra realizada');
+        }}
+      />
+      <Flex justifyContent="center">
+        <Button onClick={onOpen} mt={4} colorScheme="blue" bgColor="#FF5733">
+          Realizar Compra
+        </Button>
+      </Flex>
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <DrawerOverlay>
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader>Realizar Compra</DrawerHeader>
+            <DrawerBody>
+              <Components.WhatsAppForm cartItems={carrito} />
+            </DrawerBody>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
+    </Box>
   );
 }
 
