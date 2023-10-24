@@ -35,25 +35,22 @@ const AboutUs = () => {
       <Container maxW="container.lg">
         <Flex flexDirection={{ base: 'column', md: 'row' }}>
           <Box flex={1} mr={{ md: 4 }}>
-            <Carousel
-              autoPlay
-              infiniteLoop
-              showArrows
-              showStatus={false}
-              showThumbs={false}
-              interval={5000} // Velocidad de transición en milisegundos
-              style={{ width: '100%', height: '100%' }} // Ajusta el ancho y la altura del carrusel
-            >
-              {images.map((image, index) => (
-                <div key={index}>
-                  <img
-                    src={image}
-                    alt={`Slide ${index}`}
-                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                  />
-                </div>
-              ))}
-            </Carousel>
+          <Carousel
+  autoPlay
+  infiniteLoop
+  showArrows
+  showStatus={false}
+  showThumbs={false}
+  interval={5000}
+  style={{ width: '1920px', height: '570px' }}
+>
+  {images.map((image, index) => (
+    <div key={index}>
+      <img src={image} alt={`Slide ${index}`} style={{ width: '100%', height: '100%' }} />
+    </div>
+  ))}
+</Carousel>
+
           </Box>
           <Box flex={1}>
             <Heading as="h1" size="xl" mb={4}>

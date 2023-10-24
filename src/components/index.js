@@ -14,4 +14,4 @@ export { default as Cart } from "./Cart";
 export { default as Tree } from "./Tree"
 export { default as Nosotros} from "./Nosotros"
 export { default as WhatsAppForm} from "./WhatsAppForm"
-
+export { default as Carrodeli} from "./Carrodeli"

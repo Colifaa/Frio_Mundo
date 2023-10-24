@@ -78,10 +78,10 @@ const Carousel = () => {
         alignItems="center"
       >
         <Box flex="1">
-          <Text fontSize="3xl" color="white">
+          <Text fontFamily='Manrope sans-serif' fontSize="3xl" color="white">
             {carouselItems[activeIndex].title}
           </Text>
-          <Heading color="white" fontSize="6xl" mt={2}>
+          <Heading fontFamily='Manrope sans-serif' color="white" fontSize="6xl" mt={2}>
             {carouselItems[activeIndex].subtitle}
           </Heading>
           <Text color="white" fontSize="2xl" mt={4}>
