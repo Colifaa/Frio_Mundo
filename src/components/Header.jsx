@@ -11,12 +11,12 @@ const Header = () => {
   };
 
   return (
-    <Box as="header" bgImage="chico.png" height="111px" width="100%" position="relative">
+    <Box as="header" bgImage="/chico.png" height="111px" width="100%" position="relative">
       <Flex justify="space-between" align="center" flexWrap="wrap" position="relative">
         <Box flex={{ base: 1, sm: 1, md: 2 }}>
           <Box maxW={{ base: "100px", sm: "200px" }}>
             <Link href="/">
-              <img src="LOGOBIEN.png" alt="Logo" />
+              <img src="/LOGOBIEN.png" alt="Logo" />
             </Link>
           </Box>
         </Box>

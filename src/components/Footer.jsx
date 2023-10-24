@@ -1,4 +1,4 @@
-import { Box, Flex, Icon, Link, Text, Input, Button } from "@chakra-ui/react";
+import { Box, Flex, Icon, Link, Text, Input, Button, Image} from "@chakra-ui/react";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import ContactForm from "./ContactForm";
 
@@ -25,7 +25,8 @@ const Footer = () => {
         padding="0 20px"
       >
         <Box flex="1" mb={6}>
-          <img src="circulo2.png" height="300px" width="300px" alt="#" className="logo1" />
+        <Image src="/circulo2.png" height="300px" width="300px" alt="#" className="logo1" />
+
           <Flex mt={4} justify="center">
             <Link href="https://www.facebook.com/friomundo.ok" mr={4}>
               <Icon as={FaFacebook} fontSize="20px" />

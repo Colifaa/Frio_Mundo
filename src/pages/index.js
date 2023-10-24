@@ -11,10 +11,12 @@ const Home = () => {
      
 
 {/* Delivery */}
+
 <Components.Carrodeli/>
 
+
       {/* Products */}
-      <Box className="products" py={12}>
+      <Box className="products" py={12} bgImage="bg6.png" bgSize="cover"  bgRepeat="no-repeat">
       <Components.Cards/>
       </Box>
 
