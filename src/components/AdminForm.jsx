@@ -118,14 +118,14 @@ function AdminForm() {
           <ModalCloseButton />
           <ModalBody>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-              <FormControl>
+            <FormControl mt={4}>
                 <FormLabel>Nombre del Producto</FormLabel>
                 <Input
                   type='text'
-                  value={nombreProducto}
-                  onChange={(e) => setNombreProducto(e.target.value)}
+                  value={categoria}
+                  onChange={(e) => setCategoria(e.target.value)}
                 />
-                <FormHelperText>Indicar nombre del producto.</FormHelperText>
+                <FormHelperText>Ingresa el nombre del producto.</FormHelperText>
               </FormControl>
 
               <FormControl mt={4}>
@@ -136,36 +136,6 @@ function AdminForm() {
                   onChange={(e) => setPrecioProducto(e.target.value)}
                 />
                 <FormHelperText>Indicar precio del producto.</FormHelperText>
-              </FormControl>
-
-              <FormControl mt={4}>
-                <FormLabel>Tamaño</FormLabel>
-                <Input
-                  type='number'
-                  value={Tamaño}
-                  onChange={(e) => setTamaño(e.target.value)}
-                />
-                <FormHelperText>Indicar tamaño.</FormHelperText>
-              </FormControl>
-
-              <FormControl mt={4}>
-                <FormLabel>Tipo de pared</FormLabel>
-                <Input
-                  type='text'
-                  value={pared}
-                  onChange={(e) => setPared(e.target.value)}
-                />
-                <FormHelperText>Indicar Detalle del producto.</FormHelperText>
-              </FormControl>
-
-              <FormControl mt={4}>
-                <FormLabel>Categoría</FormLabel>
-                <Input
-                  type='text'
-                  value={categoria}
-                  onChange={(e) => setCategoria(e.target.value)}
-                />
-                <FormHelperText>Ingresa el nombre de la categoría.</FormHelperText>
               </FormControl>
 
               <FormControl mt={4}>

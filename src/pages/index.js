@@ -21,19 +21,14 @@ const Home = () => {
       <Container maxW="container.lg">
         <Flex flexWrap={{ base: 'wrap', md: 'nowrap' }} justifyContent="space-between" alignItems="center">
           <Box flex="1">
-            <Button colorScheme="teal" mt={{ base: 4, md: 0 }}>
-              Shop Now
-            </Button>
           </Box>
-          <Box flex="1">
-            <Image src="/images/envios.png" alt="#" maxW="100%" height="auto" />
-          </Box>
+
         </Flex>
       </Container>
     </Box>
 
       {/* Products */}
-      <Box className="products" py={12}>
+      <Box className="products" py={12} bgImage="bg6.png" bgSize="cover"  bgRepeat="no-repeat">
       <Components.Cards/>
       </Box>
 
