@@ -20,7 +20,7 @@ const Header = () => {
             </Link>
           </Box>
         </Box>
-        <Box flex={{ base: 1, sm: 1, md: 2 }}>
+        <Box fontFamily='Poppins, sans-serif' flex={{ base: 1, sm: 1, md: 2 }}>
           <HStack
             spacing={4}
             align="center"
@@ -40,14 +40,7 @@ const Header = () => {
             </Link>
           </HStack>
           {/* Botón de búsqueda */}
-          <Button
-            colorScheme="teal"
-            display={{ base: "none", md: "block" }} // Muestra el botón en pantallas medianas y grandes
-            style={{ marginRight: "16px" }}
-            leftIcon={<Icon as={FaSearch} />}
-          >
-            Buscar
-          </Button>
+
           {/* Botón de hamburguesa */}
           <Button
             colorScheme="teal"
