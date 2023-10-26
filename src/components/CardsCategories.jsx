@@ -3,6 +3,7 @@ import { Flex, Box, Grid, Card, CardBody, Image, Text, Heading, Button, Drawer, 
 import { supabase } from '../../lib/supabaseClient';
 import * as Components from '../components';
 import Link from 'next/link';
+import { FaSnowflake } from 'react-icons/fa'; // Importa el ícono de hielo de FontAwesome
 
 function CardsCategories() {
   const [productos, setProductos] = useState([]);
@@ -63,28 +64,15 @@ function CardsCategories() {
   }, []);
 
   return (
-    <Box>
-      <h2>Categorías Disponibles</h2>
-      <ul>
-        <li key="all">
-        <Link href={`/category`}>
-            Todos
-          </Link>
-        </li>
-        {categories.map(category => (
-          <li key={category}>
-          <Link href={`/category/${category}`}>
-              {category}
-            </Link>
-          </li>
-        ))}
-      </ul>
-     
-      <Grid
-        templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' }}
-        gap={4}
-        justifyContent="center"
+    <Flex>
+      {/* Menú de categorías a la izquierda */}
+      <Box
+        w="20%"
+        bg="#333" // Cambia el color de fondo a tu elección
+        p="4"
+        color="white" // Establece el color de texto en blanco
       >
+
         {productos
           .filter(producto => !selectedCategory || producto.category === selectedCategory)
           .map((producto, index) => (
@@ -115,8 +103,20 @@ function CardsCategories() {
                 <Components.DetailDrawer producto={producto}/>
               </Card>
             </Box>
+
+        <h2>Categorías Disponibles</h2>
+        <ul>
+          {categories.map(category => (
+            <li key={category}>
+              <Link href={`/category/${category}`}>
+                <FaSnowflake /> {category} {/* Agrega el ícono de hielo */}
+              </Link>
+            </li>
+
           ))}
-      </Grid>
+        </ul>
+      </Box>
+
 
       {/* Agrega el componente de carrito aquí */}
       <Components.Cart
@@ -151,6 +151,83 @@ function CardsCategories() {
      
     </Box>
    
+
+      {/* Contenido principal en el centro */}
+      <Box w="60%" p="4">
+        <Grid
+          templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' }}
+          gap={4}
+          justifyContent="center"
+        >
+          {productos
+            .filter(producto => !selectedCategory || producto.category === selectedCategory)
+            .map((producto, index) => (
+              <Box key={index} display="flex" flexDirection="column" alignItems="center">
+                <Card maxW="300px" mx="auto" bgColor="#000000" color="#FFFFFF" alignItems="center">
+                  <CardBody>
+                    <Image
+                      src={producto.image}
+                      alt={`Imagen de ${producto.name}`}
+                      borderRadius="lg"
+                      border="4px"
+                      borderColor="#FF5733"
+                      boxSize="250px"
+                    />
+                    <Text fontSize={['xs', 'sm', 'md', 'lg', 'xl']} fontWeight="light" fontFamily="Georgia">
+                      {producto.wall_type}
+                    </Text>
+                    <Heading size="md" color="#A7414C">
+                      {producto.name}
+                    </Heading>
+                    <Text color="#FF5733" fontSize="xl">
+                      ${producto.price}
+                    </Text>
+                  </CardBody>
+                  <Button colorScheme="green" bgColor="#FF5733" onClick={() => handleAddToCart(producto)}>
+                    Agregar Pedido
+                  </Button>
+                </Card>
+              </Box>
+            ))}
+        </Grid>
+
+        {/* Agrega la imagen con descripciones del producto aquí */}
+        <Box w="40%">
+          {/* Agrega aquí la imagen y las descripciones del producto */}
+        </Box>
+
+        {/* Agrega el componente de carrito aquí */}
+        <Components.Cart
+          items={carrito}
+          onRemoveItem={(itemId) => {
+            // Lógica para eliminar un elemento del carrito
+            const updatedCart = carrito.filter((item) => item.id !== itemId);
+            setCarrito(updatedCart);
+          }}
+          onCheckout={() => {
+            // Lógica para procesar la compra
+            console.log('Compra realizada');
+          }}
+        />
+        <Flex justifyContent="center">
+          <Button onClick={onOpen} mt={4} colorScheme="blue" bgColor="#FF5733">
+            Realizar Compra
+          </Button>
+        </Flex>
+        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+          <DrawerOverlay>
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>Realizar Compra</DrawerHeader>
+              <DrawerBody>
+                <Components.WhatsAppForm cartItems={carrito} />
+              </DrawerBody>
+            </DrawerContent>
+          </DrawerOverlay>
+        </Drawer>
+      </Box>
+    </Flex>
+
   );
 }
 
