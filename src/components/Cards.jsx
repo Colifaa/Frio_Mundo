@@ -41,7 +41,7 @@ export default function Cards() {
     {productos?.map((producto, index) => (
       <GridItem key={index} display="flex" flexDirection="column" alignItems="center">
  <Link href={`/category/${producto.category}`}>
-        <Card maxW="300px" mx="auto" bgColor="#000000" color="#FFFFFF" alignItems="center">
+        <Card maxW="300px" mx="auto" bgColor="#217dc1" color="#FFFFFF" alignItems="center">
           <CardBody>
             <Image
              objectFit="cover"

@@ -1,5 +1,5 @@
 import * as Components from "../components";
-import { Box, Container, Heading, Text, Button, Image, Flex, Input } from "@chakra-ui/react";
+import { Box, Container, Heading, Text, Button, Image, Flex, Input, Center } from "@chakra-ui/react";
 
 const Home = () => {
   return (
@@ -16,14 +16,15 @@ const Home = () => {
 
 
       {/* Products */}
-      <Box className="products" py={12} bgImage="bg6.png" bgSize="cover"  bgRepeat="no-repeat">
-      <Components.Cards/>
+      <Box className="products" py={12} bgSize="cover"  bgRepeat="no-repeat">
+      <Text fontSize='7xl' fontFamily="Manrope sans-serif" textAlign="center" style={{ textDecoration: 'underline' }}>Productos</Text>
+            <Components.Cards/>
       </Box>
 
       <Components.Tree/>
 
       {/* Contact */}
-      <Box className="contact" py={12}>
+      <Box bgColor="#02031c" className="contact" py={12}>
           <Components.ContactForm/>
 
       </Box>
