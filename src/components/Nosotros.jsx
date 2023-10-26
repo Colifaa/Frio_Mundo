@@ -16,8 +16,18 @@ function Nosotros() {
 
   return (
     <div className="container">
-      <div className="image-container">
-        <h1 style={{ backgroundColor: 'lightblue', padding: '20px', textAlign: 'center', position: 'absolute', width: '100%', top: 0, left: 0, margin: 0 }}>Nuestra Empresa FRIO MUNDO</h1>
+      <h1 style={{ backgroundColor: 'lightblue', padding: '20px', textAlign: 'center', position: 'absolute', width: '100%', top: 0, left: 0, margin: 0 }}>Nuestra Empresa FRIO MUNDO</h1>
+      
+
+      <div className="text-container">
+        <Box mt={4}>
+          <Text fontSize="xl" fontWeight="bold" className="fade-in-text">Sobre Nosotros</Text>
+          <Text className="fade-in-text">
+            En cada proyecto que emprendemos, nuestra prioridad es proporcionar soluciones de refrigeración confiables y eficientes que superen las expectativas. Nuestro equipo altamente capacitado y comprometido utiliza tecnología de punta y métodos avanzados de fabricación para garantizar la excelencia en cada detalle de nuestras cámaras frigoríficas.
+          </Text>
+        </Box>
+      </div>
+            <div className="image-container">
         <img
           src={images[selectedImage]}
           alt={`Imagen ${selectedImage + 1}`}
@@ -35,15 +45,6 @@ function Nosotros() {
             />
           ))}
         </div>
-      </div>
-
-      <div className="text-container">
-        <Box mt={4}>
-          <Text fontSize="xl" fontWeight="bold" className="fade-in-text">Sobre Nosotros</Text>
-          <Text className="fade-in-text">
-            En cada proyecto que emprendemos, nuestra prioridad es proporcionar soluciones de refrigeración confiables y eficientes que superen las expectativas. Nuestro equipo altamente capacitado y comprometido utiliza tecnología de punta y métodos avanzados de fabricación para garantizar la excelencia en cada detalle de nuestras cámaras frigoríficas.
-          </Text>
-        </Box>
       </div>
 
       <div className="values-container">
