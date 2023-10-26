@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <Box
       as="footer"
-      bgImage='bgfooter.png'
+      bgImage='/bgfooter.png'
       color="white"
       py={5}
       position="initial"
