@@ -9,7 +9,8 @@ export default function categories() {
   return (
     <div>
     <Components.Header/>
-    <Components.CardsCategories  />
+    <Components.CardsCategories/>
+    <Components.Footer/>
     </div>
   )
 }
