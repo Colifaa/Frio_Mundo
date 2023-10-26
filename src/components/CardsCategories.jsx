@@ -112,6 +112,7 @@ function CardsCategories() {
                 <Button colorScheme="green" bgColor="#FF5733" onClick={() => handleAddToCart(producto)}>
                   Agregar Pedido
                 </Button>
+                <Components.DetailDrawer producto={producto}/>
               </Card>
             </Box>
           ))}
@@ -134,6 +135,7 @@ function CardsCategories() {
         <Button onClick={onOpen} mt={4} colorScheme="blue" bgColor="#FF5733">
           Realizar Compra
         </Button>
+       
       </Flex>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay>
@@ -146,7 +148,9 @@ function CardsCategories() {
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>
+     
     </Box>
+   
   );
 }
 
