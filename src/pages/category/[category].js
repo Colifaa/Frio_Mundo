@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
-import { Box, Text, Image, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Grid, Flex } from '@chakra-ui/react';
+import { Box, Text, Heading ,Image, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Grid, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import * as Components from "../../components";
 import Link from 'next/link';
@@ -12,7 +12,7 @@ function Category() {
   const [products, setProducts] = useState([]);
   const [carrito, setCarrito] = useState([]);
   const [total, setTotal] = useState(0);
-  const [isOpen, setIsOpen] = useState(false); // Agrega la definición de isOpen aquí
+  const [isOpen, setIsOpen] = useState(false); 
 
   const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
@@ -58,25 +58,52 @@ function Category() {
     <div>
         <Components.Header/>
       <h1>Productos en la categoría {category}</h1>
-      <Grid templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' }} gap={4} justifyContent="center">
-        {products.map(product => (
-          <Box key={product.id} maxW="300px" m={4} bgColor="#000000" color="#FFFFFF" textAlign="center" p={4}>
-            <Image src={product.image} alt={`Imagen de ${product.name}`} borderRadius="lg" border="4px solid #FF5733" boxSize="250px" mx="auto" />
-            <Text fontSize={['xs', 'sm', 'md', 'lg', 'xl']} fontWeight="light" fontFamily="Georgia">
+      {products.map((product) => (
+        <Box
+          key={product.id}
+          maxW="200%" 
+          m={4}
+          bgColor="#000000"
+          color="#FFFFFF"
+          p={4}
+          display="flex"
+        >
+
+          <Image
+            src={product.image}
+            alt={`Imagen de ${product.name}`}
+            borderRadius="lg"
+            border="4px solid #FF5733"
+            boxSize="30%" // Imagen ocupa todo el espacio de la columna
+          />
+          <Box marginTop="4">
+            <Text  fontWeight="bold">Detalle del Producto:</Text>
+            <Text bgColor="red.600">{product.Detail}</Text>
+            <Text
+              fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
+              fontWeight="light"
+              fontFamily="Georgia"
+              
+            >
               {product.wall_type}
             </Text>
+            <Heading size="md" color="#A7414C">
+              {product.name}
+            </Heading>
             <Text color="#FF5733" fontSize="xl">
               ${product.price}
             </Text>
             <Text>Categoría: {product.category}</Text>
-            <Button colorScheme="green" bgColor="#FF5733" onClick={() => handleAddToCart(product)}>
+            <Button
+              colorScheme="green"
+              bgColor="#FF5733"
+              onClick={() => handleAddToCart(product)}
+            >
               Agregar Pedido
             </Button>
           </Box>
-        ))}
-      </Grid>
-      
-      
+        </Box>
+      ))}
       
       {/* Agrega el componente de carrito aquí */}
       <Components.Cart
