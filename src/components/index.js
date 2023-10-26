@@ -17,5 +17,5 @@ export { default as WhatsAppForm} from "./WhatsAppForm"
 export { default as Carrodeli} from "./Carrodeli"
 export { default as DetailDrawer} from "./DetailDrawer"
 export { default as Hola} from "./Hola"
-
+export { default as Detail} from "./Detail"
 
