@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react'
 import { MdLocalShipping } from 'react-icons/md'
 
-export default function Simple() {
+export default function Hola() {
   return (
     <Container maxW={'7xl'}>
       <SimpleGrid
