@@ -162,4 +162,4 @@ function CardsCategories() {
   );
 }
 
-export default CardsCategories;
+export default CardsCategories ;

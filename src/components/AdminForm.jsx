@@ -27,6 +27,7 @@ function AdminForm() {
   const [imagenProducto, setImagenProducto] = useState("");
   const [Tamaño, setTamaño] = useState('');
   const [categoria, setCategoria] = useState(''); // Estado para el nombre de la categoría
+  const [detalleProducto, setDetalleProducto] = useState('');
 
   const [productos, setProductos] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,8 +39,17 @@ function AdminForm() {
     precioProducto: '',
     pared: '',
     imagenProducto: '',
+    detalleProducto: '',
   });
 
+
+  const handleEdit = (product) => {
+    setEditMode(true);
+    setEditProductData(product);
+    setShowForm(true);
+  };
+
+  
   const handleClose = () => {
     setEditMode(false);
     setShowForm(false);
@@ -69,6 +79,7 @@ function AdminForm() {
           wall_type: pared,
           image: imagenBase64,
           category: categoria, // Asocia la categoría ingresada
+          Detail: detalleProducto,
         };
 
         if (editMode) {
@@ -137,6 +148,16 @@ function AdminForm() {
                 />
                 <FormHelperText>Indicar precio del producto.</FormHelperText>
               </FormControl>
+
+              <FormControl mt={4}>
+              <FormLabel>Detalle del Producto</FormLabel>
+              <Input
+                type='text'
+                value={detalleProducto}
+                onChange={(e) => setDetalleProducto(e.target.value)}
+              />
+              <FormHelperText>Ingresa el detalle del producto.</FormHelperText>
+            </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>Imagen del Producto</FormLabel>
