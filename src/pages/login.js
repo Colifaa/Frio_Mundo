@@ -1,14 +1,11 @@
 import * as Components from "../components";
 
-
-function login () {
-return(
-
-<Components.Login/>
-
-)
-
+function Login() {
+  return (
+    <div>
+      <Components.Login />
+    </div>
+  );
 }
 
-export default login
-
+export default Login;

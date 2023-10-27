@@ -99,7 +99,7 @@ function CardsAdmin() {
 
   return (
     <Grid
-      templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' }}
+      templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
       gap={4}
       justifyContent="center"
     >
