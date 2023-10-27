@@ -1,4 +1,4 @@
-import { Box, Button, Text, Flex } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
 
 const Cart = ({ items, onRemoveItem, onCheckout }) => {
   return (
@@ -14,15 +14,23 @@ const Cart = ({ items, onRemoveItem, onCheckout }) => {
             <Text fontSize="xl" color="#B76840" bgColor="rgba(0, 0, 0, 0.86)">
               {item.name}
             </Text>
+            <img
+              src={item.image}
+              alt={item.name}
+              style={{ width: "150px", height: "150px" }} // Establece el ancho y alto fijo
+            />
+            <Text fontSize="xl" color="#FF5733" bgColor="rgba(0, 0, 0, 0.86">
+              {item.category}
+            </Text>
             <Text fontSize="xl" color="#FF5733" bgColor="rgba(0, 0, 0, 0.86">
               Precio: ${item.price}
             </Text>
-            <Text fontSize="xl" color="#F2C94C" bgColor="rgba(0, 0, 0, 0.86)">
+            <Text fontSize="xl" color="#F2C94C" bgColor="rgba(0, 0, 0, 0.86">
               {item.quantity > 1 && (
                 <span>Cantidad: x{item.quantity}</span>
               )}
             </Text>
-            <Text fontSize="xx-large" color="#FF5733" fontWeight="bold" bgColor="rgba(0, 0, 0, 0.86)">
+            <Text fontSize="xx-large" color="#FF5733" fontWeight="bold" bgColor="rgba(0, 0, 0, 0.86">
               Precio Total: ${item.price * item.quantity}
             </Text>
             <Button onClick={() => onRemoveItem(item.id)} mt={2} bgColor="#FF5733" color="#FFFFFF" colorScheme='red'>
@@ -31,7 +39,6 @@ const Cart = ({ items, onRemoveItem, onCheckout }) => {
           </Box>
         ))
       )}
-    
     </Box>
   );
 };
