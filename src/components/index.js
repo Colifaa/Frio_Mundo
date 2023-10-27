@@ -16,3 +16,5 @@ export { default as Nosotros} from "./Nosotros"
 export { default as WhatsAppForm} from "./WhatsAppForm"
 export { default as Carrodeli} from "./Carrodeli"
 export { default as Detail} from "./Detail"
+export { default as LogoutButton} from "./LogoutButton"
+

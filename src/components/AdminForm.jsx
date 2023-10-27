@@ -28,7 +28,6 @@ function AdminForm() {
   const [Tamaño, setTamaño] = useState('');
   const [categoria, setCategoria] = useState(''); // Estado para el nombre de la categoría
   const [detalleProducto, setDetalleProducto] = useState('');
-
   const [productos, setProductos] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isFormularioOpen, setIsFormularioOpen] = useState(false);
@@ -116,81 +115,98 @@ function AdminForm() {
     }
   }
 
-  // Resto del código sin cambios
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        setIsLoggedIn(true); // El usuario ha iniciado sesión
+      } else {
+        setIsLoggedIn(false); // El usuario no ha iniciado sesión
+      }
+    };
+
+    checkLoginStatus();
+  }, []);
+
+
 
   return (
     <Box p={4}>
-      <Modal isOpen={showForm} onClose={handleClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>
-            {editMode ? 'Editar Producto' : 'Agregar Producto'}
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
-            <FormControl mt={4}>
-                <FormLabel>Nombre del Producto</FormLabel>
-                <Input
-                  type='text'
-                  value={categoria}
-                  onChange={(e) => setCategoria(e.target.value)}
-                />
-                <FormHelperText>Ingresa el nombre del producto.</FormHelperText>
-              </FormControl>
-
-              <FormControl mt={4}>
-                <FormLabel>Precio del Producto</FormLabel>
-                <Input
-                  type='number'
-                  value={precioProducto}
-                  onChange={(e) => setPrecioProducto(e.target.value)}
-                />
-                <FormHelperText>Indicar precio del producto.</FormHelperText>
-              </FormControl>
-
-              <FormControl mt={4}>
-              <FormLabel>Detalle del Producto</FormLabel>
-              <Input
-                type='text'
-                value={detalleProducto}
-                onChange={(e) => setDetalleProducto(e.target.value)}
-              />
-              <FormHelperText>Ingresa el detalle del producto.</FormHelperText>
-            </FormControl>
-
-              <FormControl mt={4}>
-                <FormLabel>Imagen del Producto</FormLabel>
-                <Input
-                  type='file'
-                  accept='image/*'
-                  onChange={(e) => setImagenProducto(e.target.files[0])}
-                />
-                <FormHelperText>
-                  Agregar una imagen representativa del producto.
-                </FormHelperText>
-              </FormControl>
-              <Button type='submit' mt={4} colorScheme='teal' onClick={handleSubmit}>
-                {editMode ? 'Guardar Cambios' : 'Agregar Producto'}
-              </Button>
-            </form>
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={handleClose} colorScheme='teal' mr={3}>
-              Cerrar Formulario
+      {isLoggedIn && (
+        <>
+          <Modal isOpen={showForm} onClose={handleClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>
+                {editMode ? 'Editar Producto' : 'Agregar Producto'}
+              </ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                  <FormControl mt={4}>
+                    <FormLabel>Nombre del Producto</FormLabel>
+                    <Input
+                      type='text'
+                      value={categoria}
+                      onChange={(e) => setCategoria(e.target.value)}
+                    />
+                    <FormHelperText>Ingresa el nombre del producto.</FormHelperText>
+                  </FormControl>
+  
+                  <FormControl mt={4}>
+                    <FormLabel>Precio del Producto</FormLabel>
+                    <Input
+                      type='number'
+                      value={precioProducto}
+                      onChange={(e) => setPrecioProducto(e.target.value)}
+                    />
+                    <FormHelperText>Indicar precio del producto.</FormHelperText>
+                  </FormControl>
+  
+                  <FormControl mt={4}>
+                    <FormLabel>Detalle del Producto</FormLabel>
+                    <Input
+                      type='text'
+                      value={detalleProducto}
+                      onChange={(e) => setDetalleProducto(e.target.value)}
+                    />
+                    <FormHelperText>Ingresa el detalle del producto.</FormHelperText>
+                  </FormControl>
+  
+                  <FormControl mt={4}>
+                    <FormLabel>Imagen del Producto</FormLabel>
+                    <Input
+                      type='file'
+                      accept='image/*'
+                      onChange={(e) => setImagenProducto(e.target.files[0])}
+                    />
+                    <FormHelperText>
+                      Agregar una imagen representativa del producto.
+                    </FormHelperText>
+                  </FormControl>
+                  <Button type='submit' mt={4} colorScheme='teal' onClick={handleSubmit}>
+                    {editMode ? 'Guardar Cambios' : 'Agregar Producto'}
+                  </Button>
+                </form>
+              </ModalBody>
+              <ModalFooter>
+                <Button onClick={handleClose} colorScheme='teal' mr={3}>
+                  Cerrar Formulario
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+  
+          <CardsAdmin />
+          <Box display="flex" justifyContent="center" mt={4}>
+            <Button onClick={toggleForm} colorScheme='blue'>
+              {showForm ? 'Cerrar Formulario' : 'Agregar Producto'}
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
-      <CardsAdmin />
-      <Box display="flex" justifyContent="center" mt={4}>
-        <Button onClick={toggleForm} colorScheme='blue'>
-          {showForm ? 'Cerrar Formulario' : 'Agregar Producto'}
-        </Button>
-      </Box>
+          </Box>
+        </>
+      )}
     </Box>
   );
-}
+      }  
 
 export default AdminForm;
