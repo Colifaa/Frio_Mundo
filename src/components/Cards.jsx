@@ -40,8 +40,8 @@ export default function Cards() {
     <Grid templateColumns={{ base: '1fr', sm: 'repeat(3, 1fr)', md: 'repeat(3, 1fr)' }} gap={4} justifyContent="center" >
     {productos?.map((producto, index) => (
       <GridItem key={index} display="flex" flexDirection="column" alignItems="center">
- <Link href={`/category/${producto.category}`}>
-        <Card maxW="300px" mx="auto" bgColor="#217dc1" color="#FFFFFF" alignItems="center">
+        <Link href={`/category/${producto.category}`}>
+        <Card maxW="300px" mx="auto" bgColor="#217dc1" color="#FFFFFF" alignItems="center" fontFamily='Poppins, sans-serif' fontSize="20px">
           <CardBody>
             <Image
              objectFit="cover"

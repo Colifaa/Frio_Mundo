@@ -94,10 +94,11 @@ function Carrodeli() {
               top="20%"
               left="50%"
               transform="translate(-50%, -50%)"
-              fontSize="24px"
+              fontSize="40px"
               color="white"
+              fontFamily='Poppins, sans-serif'
             >
-              Hacemos envíos a todo el país
+              HACEMOS ENVIOS A TODO EL PAIS!
             </Text>
           )}
         </Flex>

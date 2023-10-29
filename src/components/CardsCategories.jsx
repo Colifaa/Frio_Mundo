@@ -68,7 +68,7 @@ function CardsCategories() {
       {/* Menú de categorías a la izquierda */}
       <Box
         w="20%"
-        bg="#333" // Cambia el color de fondo a tu elección
+        bg="#217dc1" // Cambia el color de fondo a tu elección
         p="4"
         color="white" // Establece el color de texto en blanco
       >
@@ -95,14 +95,14 @@ function CardsCategories() {
             .filter(producto => !selectedCategory || producto.category === selectedCategory)
             .map((producto, index) => (
               <Box key={index} display="flex" flexDirection="column" alignItems="center">
-                <Card maxW="300px" mx="auto" bgColor="#000000" color="#FFFFFF" alignItems="center">
+                <Card maxW="300px" mx="auto" bgColor="white" color="#FFFFFF" alignItems="center">
                   <CardBody>
                     <Image
                       src={producto.image}
                       alt={`Imagen de ${producto.name}`}
                       borderRadius="lg"
                       border="4px"
-                      borderColor="#FF5733"
+                      borderColor="#217dc1"
                       boxSize="250px"
                     />
                     <Text fontSize={['xs', 'sm', 'md', 'lg', 'xl']} fontWeight="light" fontFamily="Georgia">
@@ -111,11 +111,11 @@ function CardsCategories() {
                     <Heading size="md" color="#A7414C">
                       {producto.name}
                     </Heading>
-                    <Text color="#FF5733" fontSize="xl">
+                    <Text color="#217dc1" fontSize="xl">
                       ${producto.price}
                     </Text>
                   </CardBody>
-                  <Button colorScheme="green" bgColor="#FF5733" onClick={() => handleAddToCart(producto)}>
+                  <Button colorScheme="green" bgColor="black" onClick={() => handleAddToCart(producto)}>
                     Agregar Pedido
                   </Button>
                 </Card>
@@ -150,7 +150,7 @@ function CardsCategories() {
           <DrawerOverlay>
             <DrawerContent>
               <DrawerCloseButton />
-              <DrawerHeader>Realizar Compra</DrawerHeader>
+              <DrawerHeader >Realizar Compra</DrawerHeader>
               <DrawerBody>
                 <Components.WhatsAppForm cartItems={carrito} />
               </DrawerBody>
