@@ -13,6 +13,9 @@ function CardsCategories() {
   const [showOrderForm, setShowOrderForm] = useState(false); // Estado para controlar si mostrar el formulario
   const [isOpen, setIsOpen] = useState(false); // Estado para controlar si el Drawer está abierto
   const [total, setTotal] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isProductDrawerOpen, setIsProductDrawerOpen] = useState(false);
+
 
   const onOpen = () => setIsOpen(true); // Función para abrir el Drawer
   const onClose = () => setIsOpen(false); // Función para cerrar el Drawer
@@ -63,6 +66,17 @@ function CardsCategories() {
     getProductos();
   }, []);
 
+  const openProductDrawer = (product) => {
+    setSelectedProduct(product);
+    setIsProductDrawerOpen(true);
+  };
+
+  const closeProductDrawer = () => {
+    setSelectedProduct(null);
+    setIsProductDrawerOpen(false);
+  };
+
+  
   return (
     <Flex>
       {/* Menú de categorías a la izquierda */}
@@ -87,7 +101,7 @@ function CardsCategories() {
       {/* Contenido principal en el centro */}
       <Box w="60%" p="4">
         <Grid
-          templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' }}
+          templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
           gap={4}
           justifyContent="center"
         >
@@ -99,7 +113,7 @@ function CardsCategories() {
                   <CardBody>
                     <Image
                       src={producto.image}
-                      alt={`Imagen de ${producto.name}`}
+                      alt={`Imagen de ${producto.category}`}
                       borderRadius="lg"
                       border="4px"
                       borderColor="#217dc1"
@@ -109,15 +123,23 @@ function CardsCategories() {
                       {producto.wall_type}
                     </Text>
                     <Heading size="md" color="#A7414C">
-                      {producto.name}
+                      {producto.category}
                     </Heading>
                     <Text color="#217dc1" fontSize="xl">
                       ${producto.price}
                     </Text>
                   </CardBody>
-                  <Button colorScheme="green" bgColor="black" onClick={() => handleAddToCart(producto)}>
+                  <Button  colorScheme="green" bgColor="black" onClick={() => handleAddToCart(producto)}>
                     Agregar Pedido
                   </Button>
+                  <Button
+          colorScheme="blue"
+          bgColor="#FF5733"
+          mt="3"
+          onClick={() => openProductDrawer(producto)}
+        >
+          Ver Detalles
+        </Button>
                 </Card>
               </Box>
             ))}
@@ -158,6 +180,37 @@ function CardsCategories() {
           </DrawerOverlay>
         </Drawer>
       </Box>
+      <Drawer isOpen={isProductDrawerOpen} placement="right" onClose={closeProductDrawer}>
+  <DrawerOverlay>
+    <DrawerContent>
+      <DrawerCloseButton />
+      <DrawerHeader>Detalles del Producto</DrawerHeader>
+      <DrawerBody>
+        {selectedProduct && (
+          <div>
+            <Image
+              src={selectedProduct.image}
+              alt={`Imagen de ${selectedProduct.category}`}
+              borderRadius="lg"
+              border="4px"
+              borderColor="#217dc1"
+              boxSize="250px"
+            />
+            <Text fontSize={['xs', 'sm', 'md', 'lg', 'xl']} fontWeight="light" fontFamily="Georgia">
+              {selectedProduct.Detail}
+            </Text>
+            <Heading size="md" color="#A7414C">
+              {selectedProduct.category}
+            </Heading>
+            <Text color="#217dc1" fontSize="xl">
+              ${selectedProduct.price}
+            </Text>
+          </div>
+        )}
+      </DrawerBody>
+    </DrawerContent>
+  </DrawerOverlay>
+</Drawer>
     </Flex>
   );
 }
