@@ -17,7 +17,7 @@ const Home = () => {
 
       {/* Products */}
       <Box className="products" py={12} bgSize="cover"  bgRepeat="no-repeat">
-      <Text fontSize='7xl' fontFamily="Manrope sans-serif" textAlign="center" style={{ textDecoration: 'underline' }}>Productos</Text>
+      <Text fontSize='40px' fontFamily='Poppins, sans-serif' textAlign="center" style={{ textDecoration: 'underline' }}>Productos</Text>
             <Components.Cards/>
       </Box>
 
