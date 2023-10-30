@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Text, SimpleGrid, VStack } from "@chakra-ui/react";
 
+
 function Nosotros() {
   const [selectedImage, setSelectedImage] = useState(0); // Índice de la imagen seleccionada
 
@@ -14,19 +15,27 @@ function Nosotros() {
     setSelectedImage(index);
   };
 
+
   return (
     <div className="container" style={{backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      <h1 style={{fontSize:'40px', fontFamily: 'Bebas Neue, sans serif', border:"1px solid blue",backgroundColor: 'white', padding: '20px', textAlign: 'center', position: 'absolute', width: '100%', top: 0, left: 0, margin: 0 }}>Nuestra Empresa FRIO MUNDO</h1>
-
-      <div  style={{backgroundImage: `url('271.jpg')`, marginLeft: '100px', marginRight:'20px', border:"1px solid blue", borderRadius:'20px', marginTop:'100px'}} className="text-container"  >
+      <div style={{fontFamily:'Montage-Demo',height:'300px', backgroundImage:`url('aboutbg2.png')`, fontSize:'40px', padding: '20px', textAlign: 'center', position: 'absolute', width: '100%', top: 0, left: 0, margin: 0 }}></div>
+      
+      <div  style={{backgroundImage: `url('272.png')`, marginLeft: '100px', marginRight:'20px', border:"1px solid blue", borderRadius:'20px', marginTop:'310px'}} className="text-container"  >
         <Box mt={4}  >
-          <Text fontSize="xl" fontWeight="bold" className="fade-in-text" textAlign='center'>Sobre Nosotros</Text>
-          <Text className="fade-in-text" fontFamily='Bebas Neue'>
-            En cada proyecto que emprendemos, nuestra prioridad es proporcionar soluciones de refrigeración confiables y eficientes que superen las expectativas. Nuestro equipo altamente capacitado y comprometido utiliza tecnología de punta y métodos avanzados de fabricación para garantizar la excelencia en cada detalle de nuestras cámaras frigoríficas.
-          </Text>
+          <Text fontSize="20px" fontWeight="bold" className="fade-in-text" textAlign='center'>Sobre Nosotros</Text>
+          <Text fontSize="15px" fontWeight="bold" className="fade-in-text" textAlign='center'>Nuestra Historia</Text>
+            <Text>
+              La Virginia nace en 1915 como un emprendimiento familiar, pero con el empuje y decisión de las grandes empresas, en unas pequeñas instalaciones de la ciudad de Rosario, Santa Fe, Argentina.
+            </Text>
+            <Text>
+              A partir de 1940 pone en práctica su expansión geográfica guiada por un plan estratégico de distribución, consistente en la multiplicación del número de sucursales, que hoy se emplazan en prácticamente toda la Argentina.
+            </Text>
+            <Text>
+              Su firme visión de largo plazo, evidenciada por una constante inversión en tecnología e innovación y por el fortalecimiento de su relación con proveedores, clientes y empleados, ha convertido aquel pequeño emprendimiento inicial en una empresa líder a nivel nacional, con una consolidación regional y proyección mundial.
+            </Text>
         </Box>
       </div>
-      <div className="image-container" style={{marginRight:'100px', border:"1px solid blue", borderRadius:'20px', marginTop:'100px'}}>
+      <div className="image-container" style={{marginRight:'100px', border:"1px solid blue", borderRadius:'20px', marginTop:'310px'}}>
         <img
           src={images[selectedImage]}
           alt={`Imagen ${selectedImage + 1}`}
@@ -46,7 +55,7 @@ function Nosotros() {
         </div>
       </div>
       <div>
-        <Text style={{fontSize:'30px', fontFamily: 'Bebas Neue, sans serif',border:"1px solid blue", backgroundColor: 'white', textAlign: 'center', position: 'absolute', width: '100%' }}>Nuestros Valores</Text>
+        <Text style={{fontSize:'30px', fontFamily: 'Montage-Demo',border:"1px solid blue", backgroundColor: 'white', textAlign: 'center', position: 'absolute', width: '100%' }}>Nuestros Valores</Text>
       </div>
       <div className="values-container">
         <VStack align="stretch">
@@ -73,9 +82,12 @@ function Nosotros() {
             </Text>
           </Box>
         </VStack>
+        
       </div>
 
       <style jsx>{`
+
+        
         .container {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -178,6 +190,7 @@ function Nosotros() {
         .small-image:hover {
           transform: scale(1.1);
         }
+        
       `}
       </style>
     </div>
