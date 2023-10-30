@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
-import { Box, Text, Heading, Image, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Grid, Flex } from '@chakra-ui/react';
+import {  Alert, AlertIcon, AlertTitle, AlertDescription, Box, Text, Heading, Image, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Grid, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import * as Components from "../../components";
-import Link from 'next/link';
 
 function Category() {
   const router = useRouter();
@@ -14,6 +13,8 @@ function Category() {
   const [total, setTotal] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [zoomedImage, setZoomedImage] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
@@ -49,6 +50,16 @@ function Category() {
       const newCartItem = { ...product, quantity: 1 };
       setCarrito([...carrito, newCartItem]);
     }
+
+    // Muestra la alerta de éxito
+    setSuccessMessage(`'${product.category}' agregado al carrito`);
+    setShowAlert(true);
+
+    // También puedes configurar un temporizador para ocultar la alerta después de unos segundos
+    setTimeout(() => {
+      setShowAlert(false);
+      setSuccessMessage("");
+    }, 5000); // Ocultar la alerta después de 5 segundos
   };
 
   const handleZoomImage = (url) => {
@@ -129,6 +140,41 @@ function Category() {
           </Box>
         ))}
       </Flex>
+      {showAlert && (
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 999,
+          }}
+        >
+         <Box borderRadius="2xl"  bgColor="blue.600" p={2} maxW="500px" w="90%">
+            <Alert
+               status="success"
+               variant="subtle"
+               flexDirection="column"
+               alignItems="center"
+               justifyContent="center"
+               textAlign="center"
+               height="auto"
+            >
+          <AlertIcon boxSize="80px" mr={0} />
+      <AlertTitle mt={4} mb={1} fontSize="lg" color="black"> 
+        Éxito
+      </AlertTitle>
+      <AlertDescription maxWidth="sm" color="black"> {/* Cambia el color del texto a negro */}
+        {successMessage}
+      </AlertDescription>
+    </Alert>
+          </Box>
+        </div>
+      )}
       <Components.Cart
         items={carrito}
         onRemoveItem={(itemId) => {

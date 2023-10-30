@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Heading, Button, IconButton } from "@chakra-ui/react";
+import { Box, Flex, Text, Heading, IconButton } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
@@ -69,22 +69,23 @@ const Carousel = () => {
       justifyContent="center"
       position="relative"
       fontFamily="Manrope, sans-serif"
+      bgSize="cover" bgPos="left" bgRepeat="no-repeat"
     >
       <Flex
         flexDir={{ base: "column", md: "row" }}
         maxWidth="1200px"
         width="100%"
-        padding="0 20px"
+        padding={{ base: "0 20px", md: "0" }}
         alignItems="center"
       >
         <Box flex="1">
-          <Text fontFamily='Manrope sans-serif' fontSize="3xl" color="white">
+          <Text fontFamily="Manrope sans-serif" fontSize={{ base: "2xl", md: "3xl" }} color="white">
             {carouselItems[activeIndex].title}
           </Text>
-          <Heading fontFamily='Manrope sans-serif' color="white" fontSize="6xl" mt={2}>
+          <Heading fontFamily="Manrope sans-serif" color="white" fontSize={{ base: "4xl", md: "6xl" }} mt={2}>
             {carouselItems[activeIndex].subtitle}
           </Heading>
-          <Text color="white" fontSize="2xl" mt={4}>
+          <Text color="white" fontSize={{ base: "xl", md: "2xl" }} mt={4}>
             {carouselItems[activeIndex].info}
           </Text>
         </Box>
@@ -94,7 +95,8 @@ const Carousel = () => {
             alt="#"
             style={{
               width: "100%",
-              maxHeight: "600px",
+              height: "auto",
+              maxWidth: "100%",
               borderRadius: "5px",
             }}
           />
