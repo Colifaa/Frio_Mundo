@@ -11,36 +11,35 @@ const Header = () => {
   };
 
   return (
-    <Box as="header" bgImage="/chico.png" height="111px" width="100%" position="relative">
-      <Flex justify="space-between" align="center" flexWrap="wrap" position="relative">
+    <Box as="header" bgColor="blue.50" bgImage="/chico.png" bgSize="cover" bgPos="center" bgRepeat="no-repeat" >
+      <Flex justify="space-between" align="center" flexWrap="wrap" padding={4}  >
         <Box flex={{ base: 1, sm: 1, md: 2 }}>
           <Box maxW={{ base: "100px", sm: "200px" }}>
             <Link href="/">
-              <img src="/LOGOBIEN.png" alt="Logo" style={{ marginLeft:"70px", marginTop:'10px' }} />
+              <img src="/LOGOBIEN.png" alt="Logo" />
             </Link>
           </Box>
         </Box>
   
-        <Box fontFamily='Chau Philomene One, sans-serif' flex={{ base: 1, sm: 1, md: 2 }} style={{ marginLeft:"500px"}}>
+        <Box fontFamily='Chau Philomene One, sans-serif' flex={{ base: 1, sm: 1, md: 2 }}>
           <HStack
             spacing={4}
             align="center"
             display={{ base: "none", md: "flex"}}
           >
-            <Link href="/" style={{ marginLeft: "20px", color: "white"}}>
+            <Link href="/" style={{ color: "white"}}>
               Inicio
             </Link>
-            <Link href="/about" style={{ marginLeft: "20px", color: "white" }}>
+            <Link href="/about" style={{ color: "white" }}>
               Nuestra Empresa
             </Link>
-            <Link href="/categories" style={{ marginLeft: "20px", color: "white"}}>
-  Categorías
-</Link>
-            <Link href="/contact" style={{ marginLeft: "20px", color: "white"}}>
+            <Link href="/categories" style={{ color: "white"}}>
+              Categorías
+            </Link>
+            <Link href="/contact" style={{ color: "white"}}>
               Contacto
             </Link>
           </HStack>
-          {/* Botón de búsqueda */}
           {/* Botón de hamburguesa */}
           <Button
             colorScheme="teal"

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, FormLabel, Input, Textarea, Button } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Textarea, Button, Select } from "@chakra-ui/react";
 
 const WhatsAppForm = ({ cartItems }) => {
   const [formData, setFormData] = useState({
@@ -54,7 +54,7 @@ const WhatsAppForm = ({ cartItems }) => {
         const itemTotal = item.price * item.quantity;
         cartTotal += itemTotal;
 
-        whatsappMessage += ` ${item.quantity}x ${item.name}, Precio Total: $${itemTotal}.`;
+        whatsappMessage += ` ${item.quantity}x ${item.category}, Precio Total: $${itemTotal}.`;
       });
     }
 
@@ -95,47 +95,20 @@ const WhatsAppForm = ({ cartItems }) => {
                     onChange={handleChange}
                 />
             </FormControl>
-            <FormControl>
-                <FormLabel>Temperatura:</FormLabel>
-                <select
-                    name="temperature"
-                    value={formData.temperature}
-                    onChange={handleChange}
-                >
-                    <option disabled selected value="">Escoge una opción</option>
-                    <optgroup label="Media temperatura">
-                        <option value="0">0°C</option>
-                        <option value="1">1°C</option>
-                        <option value="2">2°C</option>
-                        <option value="3">3°C</option>
-                        <option value="4">4°C</option>
-                        <option value="5">5°C</option>
-                    </optgroup>
-                    <optgroup label="Baja temperatura">
-                        <option value="-18">-18°C</option>
-                        <option value="-19">-19°C</option>
-                        <option value="-20">-20°C</option>
-                        <option value="-21">-21°C</option>
-                        <option value="-22">-22°C</option>
-                        <option value="-23">-23°C</option>
-                        <option value="-24">-24°C</option>
-                        <option value="-25">-25°C</option>
-
-                    </optgroup>
-                </select>
-            </FormControl>
+           
             <FormControl>
                 <FormLabel>Tipo de Paneles:</FormLabel>
-                <select
+                <Select placeholder='Selecciona un Panel'
                     name="temperatureType"
                     value={formData.temperatureType}
                     onChange={handleChange}
                 >
-                    <option disabled selected value="">Escoge una opción</option>
+                  
                     <option value="media">Media temperatura</option>
                     <option value="baja">Baja temperatura (congelado)</option>
-                </select>
+                </Select>
             </FormControl>
+      
             {formData.temperatureType === 'media' && (
                 <div className="form-group" id="mediaTemperatureSlider">
                     <FormLabel>Expesor (50-60 mm)</FormLabel>
@@ -166,6 +139,35 @@ const WhatsAppForm = ({ cartItems }) => {
                     <span id="bajaTemperatureValue">{formData.bajaTemperature} mm</span>
                 </div>
             )}
+                  <FormControl>
+                <FormLabel>Temperatura:</FormLabel>
+                <Select
+                    name="temperature"
+                    value={formData.temperature}
+                    onChange={handleChange}
+                >
+                    <option disabled selected value="">Elige la Temperatura</option>
+                    <optgroup label="Media temperatura">
+                        <option value="0">0°C</option>
+                        <option value="1">1°C</option>
+                        <option value="2">2°C</option>
+                        <option value="3">3°C</option>
+                        <option value="4">4°C</option>
+                        <option value="5">5°C</option>
+                    </optgroup>
+                    <optgroup label="Baja temperatura">
+                        <option value="-18">-18°C</option>
+                        <option value="-19">-19°C</option>
+                        <option value="-20">-20°C</option>
+                        <option value="-21">-21°C</option>
+                        <option value="-22">-22°C</option>
+                        <option value="-23">-23°C</option>
+                        <option value="-24">-24°C</option>
+                        <option value="-25">-25°C</option>
+
+                    </optgroup>
+                </Select>
+            </FormControl>
             <FormControl>
                 <FormLabel>Altura (cm):</FormLabel>
                 <Input
