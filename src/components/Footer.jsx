@@ -15,28 +15,41 @@ const Footer = () => {
       right="0"
       display="flex"
       justifyContent="center"
+      bgSize="cover"
+      bgPos="center"
+      bgRepeat="no-repeat"
     >
       <Flex
-        maxWidth="1200px"
-        width="100%"
-        justify="space-between"
-        align="center"
-        flexWrap="wrap"
-        padding="0 20px"
+       maxW="1200px"
+       mx="auto"
+       justify="space-between"
+       flexWrap="wrap"
+       px={4}
       >
-        <Box flex="1" mb={6}>
-        <Image src="/circulo2.png" height="300px" width="300px" alt="#" className="logo1" />
+        <Box  flex={{ base: "1", md: "1" }}
+          mb={6}
+          textAlign="center">
+          <Image src="/circulo2.png"  width="150px" // Ajusta el ancho de la imagen
+  height="auto" // Mantiene la proporción de la imagen
+  mx="auto" // Centra horizontalmente la imagen
+  ml="auto" // Desplaza la imagen hacia la derecha/>                 
+  
 
-          <Flex mt={4} justify="center">
+
+/>
+
+      
             <Link href="https://www.facebook.com/friomundo.ok" mr={4}>
               <Icon as={FaFacebook} fontSize="20px" />
             </Link>
             <Link href="https://www.instagram.com/friomundo.ok/">
               <Icon as={FaInstagram} fontSize="20px" />
             </Link>
-          </Flex>
+         
         </Box>
-        <Box flex="1" mb={6}>
+        <Box     flex={{ base: "1", md: "1" }}
+          mb={6}
+          textAlign="center">
           <Text fontSize="xl" mb={2}>
             Horarios de Atencion
           </Text>
@@ -45,7 +58,9 @@ const Footer = () => {
             09Hrs a 21Hrs
           </Text>
         </Box>
-        <Box flex="1" mb={6}>
+        <Box  flex={{ base: "1", md: "1" }}
+          mb={6}
+          textAlign="center" >
           <Text fontSize="xl" mb={2}>
             Contacto
           </Text>
@@ -53,18 +68,20 @@ const Footer = () => {
             +54 260 xxxxxx example@gmail.com
           </Text>
         </Box>
-        <Box flex="1" mb={6}>
+        <Box  flex={{ base: "1", md: "1" }}
+          mb={6}
+          textAlign="center">
           <form className="bottom_form">
             <Text fontSize="xl" mb={2}>
               Para más info
               Política de Privacidad, Política de Cookies, Aviso Legal
             </Text>
             <Input
-              className="enter"
-              placeholder="Ingresa tu email"
-              type="email"
-              name="email"
-              mb={2}
+               className="enter"
+               placeholder="Ingresa tu email"
+               type="email"
+               name="email"
+               mb={2}
             />
             <Button colorScheme="teal">Subscribe</Button>
           </form>

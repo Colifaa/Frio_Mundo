@@ -40,8 +40,12 @@ const Tree = () => {
 
   return (
     <Center>
-      <Box border="1px solid #0059e2" borderRadius="20px" padding="16px">
-        <Grid templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }} gap={2} alignItems="center">
+      <Box>
+        <Grid
+          templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}
+          gap={4} // Aumenté el espacio entre las cajas para mejorar la responsividad
+          alignItems="center"
+        >
           <motion.div
             ref={ref1}
             initial="hidden"
@@ -57,7 +61,7 @@ const Tree = () => {
                 borderRadius="20px"
                 padding="8px"
                 textAlign="center"
-                maxWidth="80%"
+                maxWidth="100%" // Aumenté el ancho máximo para dispositivos pequeños
                 height="auto"
                 style={{ position: "relative" }}
               >
@@ -69,12 +73,15 @@ const Tree = () => {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    borderRadius: "20px", // Aplica el borde redondeado al fondo negro
-                    opacity: 0.5, // Ajusta la opacidad del fondo negro
+                    borderRadius: "20px",
+                    opacity: 0.5,
                   }}
                 />
                 <Image src="venta.png" maxW="100%" height="auto" />
-                <Text fontFamily='Poppins, sans serif' fontSize={{ base: "sm", md: "md" }}>
+                <Text
+                  fontFamily="Poppins, sans serif"
+                  fontSize={{ base: "sm", md: "md" }}
+                >
                   Venta de Camaras Frigorificas
                 </Text>
               </Box>
@@ -96,7 +103,7 @@ const Tree = () => {
                 borderRadius="20px"
                 padding="8px"
                 textAlign="center"
-                maxWidth="80%"
+                maxWidth="100%" // Aumenté el ancho máximo para dispositivos pequeños
                 height="auto"
                 style={{ position: "relative" }}
               >
@@ -108,12 +115,15 @@ const Tree = () => {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    borderRadius: "20px", // Aplica el borde redondeado al fondo negro
-                    opacity: 0.5, // Ajusta la opacidad del fondo negro
+                    borderRadius: "20px",
+                    opacity: 0.5,
                   }}
                 />
                 <Image src="fabricar.png" maxW="100%" height="auto" />
-                <Text fontFamily='Poppins, sans serif' fontSize={{ base: "sm", md: "md" }}>
+                <Text
+                  fontFamily="Poppins, sans serif"
+                  fontSize={{ base: "sm", md: "md" }}
+                >
                   Fabricacion de Condensadores y Evaporadores
                 </Text>
               </Box>
@@ -135,7 +145,7 @@ const Tree = () => {
                 borderRadius="20px"
                 padding="8px"
                 textAlign="center"
-                maxWidth="80%"
+                maxWidth="100%" // Aumenté el ancho máximo para dispositivos pequeños
                 height="auto"
                 style={{ position: "relative" }}
               >
@@ -147,12 +157,15 @@ const Tree = () => {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    borderRadius: "20px", // Aplica el borde redondeado al fondo negro
-                    opacity: 0.5, // Ajusta la opacidad del fondo negro
+                    borderRadius: "20px",
+                    opacity: 0.5,
                   }}
                 />
                 <Image src="amedida.png" maxW="100%" height="auto" />
-                <Text fontFamily='Poppins, sans serif' fontSize={{ base: "sm", md: "md" }}>
+                <Text
+                  fontFamily="Poppins, sans serif"
+                  fontSize={{ base: "sm", md: "md" }}
+                >
                   Realizamos Camaras Frigorificas a Medida
                 </Text>
               </Box>
