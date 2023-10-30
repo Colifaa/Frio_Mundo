@@ -105,3 +105,8 @@ a {
     color-scheme: dark;
   }
 }
+@font-face {
+  font-family: 'Montage-Demo';
+  src: url('/public/font/Montage-Demo.ttf') format('woff'); 
+
+}
