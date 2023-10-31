@@ -22,6 +22,7 @@ import { supabase } from '../../lib/supabaseClient';
 function CardsAdmin() {
   const [productos, setProductos] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null); // Producto en modo de edición
+  console.log(editingProduct);
   const [isEditingModalOpen, setEditingModalOpen] = useState(false); // Estado del modal
 
   // Función para cargar los productos desde la base de datos
@@ -50,10 +51,10 @@ function CardsAdmin() {
           name: editedProduct.name,
           price: editedProduct.price,
           Detail: editedProduct.Detail,
-          image: editedProduct.image,
+          image: editedProduct.image, // El producto editado contiene la imagen en formato Base64
         })
         .eq('id', editedProduct.id);
-
+  
       if (error) {
         console.error('Error al actualizar el producto:', error);
       } else {
@@ -163,17 +164,24 @@ function CardsAdmin() {
               value={editingProduct?.Detail || ''}
               onChange={(e) => setEditingProduct({ ...editingProduct, Detail: e.target.value })}
             />
-            <label htmlFor="image">Imagen:</label>
-            <Input
-              id="image"
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                if (file) {
-                  setEditingProduct({ ...editingProduct, image: URL.createObjectURL(file) });
-                }
-              }}
+           <label htmlFor="image">Imagen:</label>
+<Input
+  id="image"
+  type="file"
+  accept="image/*"
+  onChange={async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Lee el archivo de imagen como una cadena Base64
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const imagenBase64 = event.target.result;
+        // Almacena la representación Base64 de la imagen en el estado del producto editado
+        setEditingProduct({ ...editingProduct, image: imagenBase64 });
+      };
+      reader.readAsDataURL(file);
+    }
+  }}
             />
           </ModalBody>
           <ModalFooter>

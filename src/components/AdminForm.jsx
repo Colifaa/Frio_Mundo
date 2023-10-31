@@ -32,11 +32,10 @@ function AdminForm() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isFormularioOpen, setIsFormularioOpen] = useState(false);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+
   const [editProductData, setEditProductData] = useState({
     id: '',
-    nombreProducto: '',
     precioProducto: '',
-    pared: '',
     imagenProducto: '',
     detalleProducto: '',
   });
@@ -72,10 +71,7 @@ function AdminForm() {
         const imagenBase64 = event.target.result;
 
         const nuevoProducto = {
-          name: nombreProducto,
           price: precioProducto,
-          size: Tamaño,
-          wall_type: pared,
           image: imagenBase64,
           category: categoria, // Asocia la categoría ingresada
           Detail: detalleProducto,
