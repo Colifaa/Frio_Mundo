@@ -11,21 +11,26 @@ const Header = () => {
   };
 
   return (
-    <Box as="header" bgColor="blue.50" bgImage="/chico.png" bgSize="cover" bgPos="center" bgRepeat="no-repeat" >
+    <Box as="header" bgColor="blue.50" bgImage="/chico.png" bgSize="cover" bgPos="center" bgRepeat="no-repeat" width='1905px' height='110px'>
       <Flex justify="space-between" align="center" flexWrap="wrap" padding={4}  >
         <Box flex={{ base: 1, sm: 1, md: 2 }}>
-          <Box maxW={{ base: "100px", sm: "200px" }}>
+          <Box maxW={{ base: "120px", sm: "240px" }} marginLeft='40px'>
             <Link href="/">
               <img src="/LOGOBIEN.png" alt="Logo" />
             </Link>
           </Box>
         </Box>
   
-        <Box fontFamily='Chau Philomene One, sans-serif' flex={{ base: 1, sm: 1, md: 2 }}>
+        <Box flex={{ base: 1, sm: 1, md: 2 }}>
           <HStack
-            spacing={4}
+            spacing={10}
             align="center"
             display={{ base: "none", md: "flex"}}
+            justifyContent='flex-end'
+            fontFamily="Oswald, sans-serif"
+            fontWeight={700}
+            marginRight='30px'
+        
           >
             <Link href="/" style={{ color: "white"}}>
               Inicio

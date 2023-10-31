@@ -95,7 +95,7 @@ const WhatsAppForm = ({ cartItems }) => {
                     onChange={handleChange}
                 />
             </FormControl>
-           
+            
             <FormControl>
                 <FormLabel>Tipo de Paneles:</FormLabel>
                 <Select placeholder='Selecciona un Panel'

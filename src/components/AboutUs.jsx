@@ -33,28 +33,28 @@ const AboutUs = () => {
     <Box p={4}>
       <Container maxW='max'>
         <Flex flexDirection={{ base: 'column', md: 'row' }}>
-          <Box flex={{ base: 1, md: 2 }}>
-            <Heading as="h1" size="xl" mb={4}>
+          <Box flex={{ base: 1, md: 2 }} marginLeft='250px' marginTop='30px' marginBottom='30px'>
+            <Heading as="h1" size="xl" mb={4} color="#217dc1">
               QUIENES SOMOS?
             </Heading>
-            <Text fontFamily='Poppins, sans-serif' fontSize="lg" mb={4}>
+            <Text fontFamily='Poppins, sans-serif'  mb={4} >
               En FRIO MUNDO, nos enorgullece llevar más de [número de años de experiencia] años en la vanguardia de la industria de cámaras frigoríficas. Somos una empresa comprometida con la excelencia y la innovación, diseñando y fabricando soluciones de refrigeración de alta calidad que cumplen con las más exigentes normas y necesidades de nuestros clientes.
             </Text>
-            <Text fontFamily='Poppins, sans-serif' fontSize="lg" mb={4}>
+            <Text fontFamily='Poppins, sans-serif'  mb={4}>
               En cada proyecto que emprendemos, nuestra prioridad es proporcionar soluciones de refrigeración confiables y eficientes que superen las expectativas.
             </Text>
             <Box mt={4}>
               <Text fontSize="lg" color="teal.500" fontFamily='Poppins, sans-serif'>Nuestras Redes Sociales:</Text>
               <Flex mt={2}>
-                <a href="https://www.facebook.com/TuPaginaDeFacebook" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/friomundo.ok" target="_blank" rel="noopener noreferrer">
                   <FaFacebook size={30} style={{ marginRight: '10px', color: 'teal' }} />
                 </a>
-                <a href="https://www.instagram.com/TuPaginaDeInstagram" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/friomundo.ok" target="_blank" rel="noopener noreferrer">
                   <FaInstagram size={30} style={{ marginRight: '10px', color: 'teal' }} />
                 </a>
                 <Button
                   as="a"
-                  href="https://api.whatsapp.com/send?phone=TUNUMERODETELEFONO"
+                  href="https://api.whatsapp.com/send/?phone=%2B542995692142&text=Hola+tengo+la+siguiente+consulta:+&type=phone_number&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
                   leftIcon={<FaWhatsapp />}
@@ -66,7 +66,7 @@ const AboutUs = () => {
               </Flex>
             </Box>
           </Box>
-          <Box flex={{ base: 1, md: 3 }}>
+          <Box flex={{ base: 1, md: 3 }} marginTop='30px' marginBottom='30px' marginRight='200px'>
             <Carousel
               autoPlay
               infiniteLoop
@@ -74,10 +74,11 @@ const AboutUs = () => {
               showStatus={false}
               showThumbs={false}
               interval={5000}
+              
             >
               {images.map((image, index) => (
                 <div key={index}>
-                  <img src={image} alt={`Slide ${index}`} style={{ width: '100%' }} />
+                  <img src={image} alt={`Slide ${index}`} style={{ width:'600px', height:'400px' }} />
                 </div>
               ))}
             </Carousel>

@@ -65,7 +65,9 @@ const Footer = () => {
             Contacto
           </Text>
           <Text>
-            +54 260 xxxxxx example@gmail.com
+          +5492995692142<br></br>
+          +5492604000756<br></br>
+          example@gmail.com
           </Text>
         </Box>
         <Box  flex={{ base: "1", md: "1" }}

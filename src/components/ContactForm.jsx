@@ -50,7 +50,7 @@ const ContactForm = () => {
 
   const handleFormSubmit = () => {
     const mensajeWhatsApp = `Nombre: ${formData.nombre}%0AEmail: ${formData.email}%0ATeléfono: ${formData.telefono}%0AMensaje: ${formData.mensaje}`;
-    const numeroWhatsApp = '+5492604609798'; // Reemplaza con el número de WhatsApp al que deseas enviar el mensaje
+    const numeroWhatsApp = '+5492995692142'; // Reemplaza con el número de WhatsApp al que deseas enviar el mensaje
     const whatsappURL = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
     window.open(whatsappURL, '_blank');
   };
