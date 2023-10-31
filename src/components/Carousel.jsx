@@ -61,8 +61,8 @@ const Carousel = () => {
   return (
     <Box
       bgImage="bg6.png"
-      height={{ base: "auto", md: "844px" }}
-      width="100%"
+      height="821px"
+      width="1905px"
       backgroundSize="cover"
       display="flex"
       alignItems="center"

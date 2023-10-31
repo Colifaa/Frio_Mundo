@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Alert, AlertIcon, AlertTitle, AlertDescription, Flex, Box, Grid, Card, CardBody, Image, Text, Heading, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from '@chakra-ui/react';
 import { supabase } from '../../lib/supabaseClient';
 import * as Components from '../components';
 import Link from 'next/link';
 import { FaSnowflake } from 'react-icons/fa'; // Importa el ícono de hielo de FontAwesome
+import React, { useState, useEffect } from 'react';
+import { Alert, AlertIcon, AlertTitle, AlertDescription, Flex, Box, Grid, Card, CardBody, Image, Text, Heading, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody } from '@chakra-ui/react';
+
 
 function CardsCategories() {
   const [productos, setProductos] = useState([]);
@@ -125,47 +126,57 @@ function CardsCategories() {
   >
     
     {/* Menú de categorías a la izquierda */}
-    <Flex
-      bg="#217dc1" // Cambia el color de fondo a tu elección
-      p="4"
-      color="white" // Establece el color de texto en blanco
-      alignItems="center" // Alinea los elementos verticalmente al centro
-      justifyContent="right"
-    >
-     
-    <ul style={{
-  display: "flex",
-  flexWrap: "wrap", // Permite que los elementos se envuelvan en varias filas
-  listStyleType: "none",
-  margin: 0,
-  padding: 0,
-}}>
-  
-  {categories.map(category => (
-    <li
-      key={category}
-      style={{
-        marginRight: "10px",
-        marginBottom: "10px", // Agrega espacio entre elementos
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
+    <Flex w="100%" bg="#217dc1" flexDirection="column" alignItems="center">
       
-      <Link href={`/category/${category}`} style={{ display: 'flex', alignItems: 'center' }}>
-        <Box mr="2">
-          <FaSnowflake />
-        </Box>
-        <Box>
-          {category}
-        </Box>
-        
-      </Link>
-    </li>
-  ))}
-</ul>
-      
-    </Flex>
+      <Flex
+        bgImage='bgproduct.png'
+        width='1900px'
+        height='300px'
+        p="4"
+        color="white"
+        alignItems="center"
+        justifyContent="right"
+      >
+        <ul
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            listStyleType: "none",
+            margin: 0,
+            padding: 0,
+            justifyContent: "center",
+            marginRight:'300PX',
+            marginTop:'100px'
+          }}
+        >
+          {categories.map((category) => (
+            <li
+              key={category}
+              style={{
+                marginRight: "10px",
+                marginBottom: "10px",
+                display: "flex",
+                alignItems: "center",
+                border:'1px solid blue',
+                borderRadius:'20px'
+              }}
+            >
+              <Link href={`/category/${category}`} style={{ display: 'flex', alignItems: 'center' }}>
+                <Box
+                  mr="2"
+                  borderWidth="1px"
+                  borderRadius="md"
+                  p="2"
+                  borderColor="#fff"
+                >
+                  <FaSnowflake />
+                </Box>
+                <Box>{category}</Box>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Flex>
     <Button onClick={handleOpenCart}>Abrir Carrito</Button>
     <Components.Cart  isOpen={isCartOpen} onClose={handleCloseCart}
           items={carrito}
@@ -357,6 +368,7 @@ function CardsCategories() {
     </DrawerContent>
   </DrawerOverlay>
 </Drawer>
+    </Flex>
     </Flex>
   );
 }

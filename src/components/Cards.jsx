@@ -37,7 +37,7 @@ export default function Cards() {
   }, []);
 
   return (
-    <Grid templateColumns={{ base: '1fr', sm: 'repeat(3, 1fr)', md: 'repeat(3, 1fr)' }} gap={4} justifyContent="center" >
+    <Grid templateColumns={{ base: '1fr', sm: 'repeat(3, 1fr)', md: 'repeat(3, 1fr)' }} gap={4} justifyContent="center" marginLeft='230px' marginRight='230px'>
     {productos?.map((producto, index) => (
       <GridItem key={index} display="flex" flexDirection="column" alignItems="center">
         <Link href={`/category/${producto.category}`}>
