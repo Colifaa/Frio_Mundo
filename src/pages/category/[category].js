@@ -3,6 +3,7 @@ import { supabase } from '../../../lib/supabaseClient';
 import {  Alert, AlertIcon, AlertTitle, AlertDescription, Box, Text, Heading, Image, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Grid, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import * as Components from "../../components";
+import { FaShieldAlt, FaTruck } from 'react-icons/fa';
 
 function Category() {
   const router = useRouter();
@@ -76,7 +77,7 @@ function Category() {
       <Flex>
         <h1>Productos en la categoría <br></br>{category}</h1>
         {products.map((product) => (
-          <Box
+          <Box 
             key={product.id}
             maxW="300%"
             m={4}
@@ -91,11 +92,14 @@ function Category() {
               style={{ position: 'relative' }}
             >
               <Image
+                marginLeft='200px'
                 src={product.image}
                 alt={`Imagen de ${product.name}`}
                 borderRadius="lg"
                 border="4px solid #217dc1"
                 boxSize="100%"
+                width='700px'
+                height='600px'
               />
               {zoomedImage === product.image && (
                 <Image
@@ -112,10 +116,19 @@ function Category() {
                 />
               )}
             </div>
-            <Box marginTop="4">
-              <Text color="black">{product.category}</Text>
-              <Text color='black' fontWeight="bold" bgColor="#217dc1">Detalle del Producto:</Text>
-              <Text color='black' >{product.Detail}</Text>
+            <Box marginTop="4" marginLeft='200px'>
+              <Text color="black" fontFamily='Poppins' fontSize='30px'>{product.category}</Text>
+              <Text color='black' fontWeight="bold" bgColor="#217dc1" fontSize='20px'>Detalle del Producto:</Text>
+              <Text color='black' >{product.detailmax}</Text>
+              
+              <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize='15px' paddingTop='5px'>
+                <FaShieldAlt /> Garantía: 1 año
+                </Text>
+                <br></br>
+                <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize='15px' paddingTop='5px'>
+                  <FaTruck /> Envíos a todo el pais
+                </Text>
+              
               <Text
                 fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
                 fontWeight="light"

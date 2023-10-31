@@ -2,10 +2,9 @@ import { Box, Button, Text, Flex, Drawer, DrawerOverlay, DrawerContent, DrawerCl
 
 const Cart = ({ items, onRemoveItem, onCheckout, isOpen, onClose }) => {
   return (
-    <Drawer isOpen={isOpen} placement="rigth" size="xl" onClose={onClose} >
+    <Drawer isOpen={isOpen} placement="right" size="xl" onClose={onClose}>
       <DrawerOverlay>
-      <DrawerContent bg="rgba(173, 216, 230, 0.5)">
-
+        <DrawerContent bg="rgba(173, 216, 230, 0.5)">
           <DrawerCloseButton />
           <DrawerHeader>
             <Text
@@ -15,7 +14,7 @@ const Cart = ({ items, onRemoveItem, onCheckout, isOpen, onClose }) => {
               mt={{ base: 4, md: 20 }}
               fontStyle="oblique"
               fontWeight="extrabold"
-              fontFamily="Georgia"
+              fontFamily="Poppins"
               color="WHITE"
             >
               Carrito de Compras
@@ -23,7 +22,7 @@ const Cart = ({ items, onRemoveItem, onCheckout, isOpen, onClose }) => {
           </DrawerHeader>
           <DrawerBody>
             {items && items.length === 0 ? (
-              <Text>Su carrito está vacío.</Text>
+              <Text color='white'>Su carrito está vacío.</Text>
             ) : (
               items?.map((item) => (
                 <Flex
@@ -95,6 +94,15 @@ const Cart = ({ items, onRemoveItem, onCheckout, isOpen, onClose }) => {
                 </Flex>
               ))
             )}
+            <Button
+              onClick={onCheckout}
+              mt={4}
+              bgColor="#217dc1"
+              color="#FFFFFF"
+              colorScheme="blue"
+            >
+              Realizar Compra
+            </Button>
           </DrawerBody>
         </DrawerContent>
       </DrawerOverlay>
