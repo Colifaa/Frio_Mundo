@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, FormLabel, Input, Textarea, Button, Select } from "@chakra-ui/react";
+import { Box, FormControl, FormLabel, Input, Textarea, Button, Select } from "@chakra-ui/react";
 
 const WhatsAppForm = ({ cartItems }) => {
   const [formData, setFormData] = useState({
@@ -66,139 +66,159 @@ const WhatsAppForm = ({ cartItems }) => {
 
     window.open(whatsappLink, '_blank');
   };
-    return (
-        <div>
-            <FormControl>
-                <FormLabel>Nombre:</FormLabel>
-                <Input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Número de Teléfono:</FormLabel>
-                <Input
-                    type="tel"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
-                    onChange={handleChange}
-                />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Dirección de Entrega:</FormLabel>
-                <Input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                />
-            </FormControl>
-            
-            <FormControl>
-                <FormLabel>Tipo de Paneles:</FormLabel>
-                <Select placeholder='Selecciona un Panel'
-                    name="temperatureType"
-                    value={formData.temperatureType}
-                    onChange={handleChange}
-                >
-                  
-                    <option value="media">Media temperatura</option>
-                    <option value="baja">Baja temperatura (congelado)</option>
-                </Select>
-            </FormControl>
-      
-            {formData.temperatureType === 'media' && (
-                <div className="form-group" id="mediaTemperatureSlider">
-                    <FormLabel>Expesor (50-60 mm)</FormLabel>
-                    <input
-                        type="range"
-                        min="50"
-                        max="60"
-                        value={formData.mediaTemperature}
-                        onChange={handleChange}
-                        className="slider"
-                        name="mediaTemperature"
-                    />
-                    <span id="mediaTemperatureValue">{formData.mediaTemperature} mm</span>
-                </div>
-            )}
-            {formData.temperatureType === 'baja' && (
-                <div className="form-group" id="bajaTemperatureSlider">
-                    <FormLabel>Expesor (100-150 mm)</FormLabel>
-                    <input
-                        type="range"
-                        min="100"
-                        max="150"
-                        value={formData.bajaTemperature}
-                        onChange={handleChange}
-                        className="slider"
-                        name="bajaTemperature"
-                    />
-                    <span id="bajaTemperatureValue">{formData.bajaTemperature} mm</span>
-                </div>
-            )}
-                  <FormControl>
-                <FormLabel>Temperatura:</FormLabel>
-                <Select
-                    name="temperature"
-                    value={formData.temperature}
-                    onChange={handleChange}
-                >
-                    <option disabled selected value="">Elige la Temperatura</option>
-                    <optgroup label="Media temperatura">
-                        <option value="0">0°C</option>
-                        <option value="1">1°C</option>
-                        <option value="2">2°C</option>
-                        <option value="3">3°C</option>
-                        <option value="4">4°C</option>
-                        <option value="5">5°C</option>
-                    </optgroup>
-                    <optgroup label="Baja temperatura">
-                        <option value="-18">-18°C</option>
-                        <option value="-19">-19°C</option>
-                        <option value="-20">-20°C</option>
-                        <option value="-21">-21°C</option>
-                        <option value="-22">-22°C</option>
-                        <option value="-23">-23°C</option>
-                        <option value="-24">-24°C</option>
-                        <option value="-25">-25°C</option>
-
-                    </optgroup>
-                </Select>
-            </FormControl>
-            <FormControl>
-                <FormLabel>Altura (cm):</FormLabel>
-                <Input
-                    type="number"
-                    name="height"
-                    value={formData.height}
-                    onChange={handleChange}
-                    min="0"
-                />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Ancho (cm):</FormLabel>
-                <Input
-                    type="number"
-                    name="width"
-                    value={formData.width}
-                    onChange={handleChange}
-                    min="0"
-                />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Mensaje (opcional):</FormLabel>
-                <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                />
-            </FormControl>
-            <Button onClick={handleSubmit}>Enviar Pedido por WhatsApp</Button>
-        </div>
-    );
+  return (
+    <Box p={4}>
+      <FormControl>
+        <FormLabel>Nombre:</FormLabel>
+        <Input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          bg="#FF5733" // Cambio de fondo a color naranja
+          color="Purple" // Texto en color blanco
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel>Número de Teléfono:</FormLabel>
+        <Input
+          type="tel"
+          name="phoneNumber"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          bg="#FF5733" // Cambio de fondo a color naranja
+          color="white" // Texto en color blanco
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel>Dirección de Entrega:</FormLabel>
+        <Input
+          type="text"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          bg="#FF5733" // Cambio de fondo a color naranja
+          color="white" // Texto en color blanco
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel>Tipo de Paneles:</FormLabel>
+        <Select
+          placeholder='Selecciona un Panel'
+          name="temperatureType"
+          value={formData.temperatureType}
+          onChange={handleChange}
+          bg="#FF5733" // Cambio de fondo a color naranja
+          color="white" // Texto en color blanco
+        >
+          <option value="media">Media temperatura</option>
+          <option value="baja">Baja temperatura (congelado)</option>
+        </Select>
+      </FormControl>
+      {formData.temperatureType === 'media' && (
+        <FormControl>
+          <FormLabel>Grosor (50-60 mm): {formData.mediaTemperature} mm</FormLabel>
+          <Input
+            type="range"
+            min="50"
+            max="60"
+            name="mediaTemperature"
+            value={formData.mediaTemperature}
+            onChange={handleChange}
+            bg="#FF5733" // Cambio de fondo a color naranja
+            color="white" // Texto en color blanco
+          />
+        </FormControl>
+      )}
+      {formData.temperatureType === 'baja' && (
+        <FormControl>
+          <FormLabel>Grosor (100-150 mm): {formData.bajaTemperature} mm</FormLabel>
+          <Input
+            type="range"
+            min="100"
+            max="150"
+            name="bajaTemperature"
+            value={formData.bajaTemperature}
+            onChange={handleChange}
+            bg="#FF5733" // Cambio de fondo a color naranja
+            color="white" // Texto en color blanco
+          />
+        </FormControl>
+      )}
+      <FormControl>
+        <FormLabel>Temperatura:</FormLabel>
+        <Select
+          name="temperature"
+          value={formData.temperature}
+          onChange={handleChange}
+          bg="#FF5733" // Cambio de fondo a color naranja
+          color="white" // Texto en color blanco
+        >
+          <optgroup label="Media temperatura">
+            <option value="0">0°C</option>
+            <option value="1">1°C</option>
+            <option value="2">2°C</option>
+            <option value="3">3°C</option>
+            <option value="4">4°C</option>
+            <option value="5">5°C</option>
+          </optgroup>
+          <optgroup label="Baja temperatura">
+            <option value="-18">-18°C</option>
+            <option value="-19">-19°C</option>
+            <option value="-20">-20°C</option>
+            <option value="-21">-21°C</option>
+            <option value="-22">-22°C</option>
+            <option value="-23">-23°C</option>
+            <option value="-24">-24°C</option>
+            <option value="-25">-25°C</option>
+          </optgroup>
+        </Select>
+      </FormControl>
+      <FormControl>
+        <FormLabel>Altura (cm):</FormLabel>
+        <Input
+          type="number"
+          name="height"
+          value={formData.height}
+          onChange={handleChange}
+          min="0"
+          bg="#FF5733" // Cambio de fondo a color naranja
+          color="white" // Texto en color blanco
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel>Ancho (cm):</FormLabel>
+        <Input
+          type="number"
+          name="width"
+          value={formData.width}
+          onChange={handleChange}
+          min="0"
+          bg="#FF5733" // Cambio de fondo a color naranja
+          color="white" // Texto en color blanco
+        />
+      </FormControl>
+      <FormControl>
+        <FormLabel>Mensaje (opcional):</FormLabel>
+        <Textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          bg="#FF5733" // Cambio de fondo a color naranja
+          color="white" // Texto en color blanco
+        />
+      </FormControl>
+      <Button
+        onClick={handleSubmit}
+        colorScheme="blue"
+        bgColor="#FF5733"
+        mt={4}
+        width="100%"
+      >
+        Realizar Compra
+      </Button>
+    </Box>
+  );
 };
 
 export default WhatsAppForm;
