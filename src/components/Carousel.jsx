@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Heading, IconButton } from "@chakra-ui/react";
+import { Box, Flex, Text, Heading, IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
@@ -8,31 +8,31 @@ const Carousel = () => {
       imageSrc: "primera1.png",
       title: "Camaras ",
       subtitle: "FRIGORIFICAS",
-      info: "Info",
+      info: "",
     },
     {
       imageSrc: "carousel4.png",
       title: "Walking In Cooler",
       subtitle: "IN COOLER",
-      info: "Info",
+      info: "",
     },
     {
       imageSrc: "carousel32.png",
       title: "Condensadores y",
       subtitle: "EVAPORADORES",
-      info: "Descripción del nuevo producto",
+      info: "",
     },
     {
       imageSrc: "conserva.png",
       title: "Conservadora",
       subtitle: "TERMICA",
-      info: "Descripción del nuevo producto",
+      info: "",
     },
     {
       imageSrc: "paneles.png",
       title: "Paneles",
       subtitle: "FRIGORIFICOS",
-      info: "Descripción del nuevo producto",
+      info: "",
     },
   ];
 
@@ -58,18 +58,24 @@ const Carousel = () => {
     };
   }, [activeIndex]);
 
+  const textFontSize = useBreakpointValue({ base: "2xl", md: "3xl" });
+  const titleFontSize = useBreakpointValue({ base: "4xl", md: "6xl" });
+  const infoFontSize = useBreakpointValue({ base: "xl", md: "2xl" });
+
   return (
     <Box
       bgImage="bg6.png"
-      height="821px"
-      width="1905px"
+      height={["500px", "821px"]}
+      width="100%"
       backgroundSize="cover"
       display="flex"
       alignItems="center"
       justifyContent="center"
       position="relative"
       fontFamily="Manrope, sans-serif"
-      bgSize="cover" bgPos="left" bgRepeat="no-repeat"
+      bgSize="cover"
+      bgPos="left"
+      bgRepeat="no-repeat"
     >
       <Flex
         flexDir={{ base: "column", md: "row" }}
@@ -78,18 +84,18 @@ const Carousel = () => {
         padding={{ base: "0 20px", md: "0" }}
         alignItems="center"
       >
-        <Box flex="1">
-          <Text fontFamily="Manrope sans-serif" fontSize={{ base: "2xl", md: "3xl" }} color="white">
+        <Box flex={{ base: 1, md: 1 }}>
+          <Text fontFamily="Manrope sans-serif" fontSize={textFontSize} color="white">
             {carouselItems[activeIndex].title}
           </Text>
-          <Heading fontFamily="Manrope sans-serif" color="white" fontSize={{ base: "4xl", md: "6xl" }} mt={2}>
+          <Heading fontFamily="Manrope sans-serif" color="white" fontSize={titleFontSize} mt={2}>
             {carouselItems[activeIndex].subtitle}
           </Heading>
-          <Text color="white" fontSize={{ base: "xl", md: "2xl" }} mt={4}>
+          <Text color="white" fontSize={infoFontSize} mt={4}>
             {carouselItems[activeIndex].info}
           </Text>
         </Box>
-        <Box flex="1">
+        <Box flex={{ base: 1, md: 1 }}>
           <img
             src={carouselItems[activeIndex].imageSrc}
             alt="#"
