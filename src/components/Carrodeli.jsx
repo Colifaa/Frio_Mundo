@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Container, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, Image, Text, useBreakpointValue, useMediaQuery } from "@chakra-ui/react";
 
 function Carrodeli() {
   const [showCarro, setShowCarro] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [showImagenFinal, setShowImagenFinal] = useState(false);
   const [showNewImage, setShowNewImage] = useState(false);
+
+  const [isLargerThan800, isSmallerThanMobile] = useMediaQuery(["(min-width: 800px)", "(max-width: 480px)"]); // Adjust the max-width as needed
+  const fontSize = useBreakpointValue({ base: "20px", md: "40px" });
+  const imagePosition = useBreakpointValue({ base: "translateX(50%)", md: "translateX(200px)" });
+  const imageSizeCarro = useBreakpointValue({ base: "200px", md: "100%" });
+  const imageSizeOthers = useBreakpointValue({ base: "75%", md: "100%" });
+  const imagePositionMobile = useBreakpointValue({ base: '150px', md: '50px' });
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
@@ -39,6 +46,10 @@ function Carrodeli() {
     };
   }, []);
 
+  if (isSmallerThanMobile) {
+    return null; // Si es una pantalla de celular, no renderizar el componente
+  }
+
   return (
     <Box
       bgImage="url('PUBLI2.png')"
@@ -49,7 +60,7 @@ function Carrodeli() {
       position="relative"
       overflow="hidden"
     >
-      <Container maxW="container.lg">
+      <Container maxW={isLargerThan800 ? "container.lg" : "container.sm"}>
         <Flex
           flexWrap={{ base: 'wrap', md: 'nowrap' }}
           justifyContent="space-between"
@@ -58,20 +69,20 @@ function Carrodeli() {
           <Box
             flex="1"
             style={{
-              transform: showCarro ? 'translateX(200px)' : 'translateX(-100%)',
+              transform: showCarro ? imagePosition : 'translateX(-100%)',
               transition: 'transform 2s ease',
             }}
           >
-            <Image src="carro.png" alt="#" maxW="100%" height="auto" />
+            <Image src="carro.png" alt="#" maxW={imageSizeCarro} height="auto" style={{ marginTop: imagePositionMobile }} />
           </Box>
           {showImagenFinal && (
             <Image
               src='argentina.png'
               alt="Imagen Final"
-              maxW="100%"
+              maxW={imageSizeOthers}
               height="auto"
               style={{
-                transform: 'translateX(100px)' // Ajusta la propiedad transform para alejar la imagen
+                transform: imagePosition // Ajusta la propiedad transform para alejar la imagen
               }}
             />
           )}
@@ -79,11 +90,11 @@ function Carrodeli() {
             <Image
               src='delfrio.png'
               alt="Nueva Imagen"
-              maxW="100%"
+              maxW={imageSizeOthers}
               height="auto"
               style={{
                 position: 'absolute',
-                top: '50px',
+                top: imagePositionMobile,
                 left: '50px',
               }}
             />
@@ -94,7 +105,7 @@ function Carrodeli() {
               top="20%"
               left="50%"
               transform="translate(-50%, -50%)"
-              fontSize="40px"
+              fontSize={fontSize}
               color="white"
               fontFamily='Poppins, sans-serif'
             >

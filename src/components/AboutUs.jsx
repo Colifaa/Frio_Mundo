@@ -6,6 +6,8 @@ import {
   Text,
   Flex,
   Button,
+  useBreakpointValue,
+  useMediaQuery
 } from '@chakra-ui/react';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { Carousel } from 'react-responsive-carousel';
@@ -29,18 +31,24 @@ const AboutUs = () => {
     };
   }, []);
 
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
+  
+  const imageWidth = isLargerThan768 ? "600px" : "80%";
+  const marginLeftValue = isLargerThan768 ? "250px" : "0";
+  const marginRightValue = isLargerThan768 ? "200px" : "0";
+
   return (
     <Box p={4}>
       <Container maxW='max'>
         <Flex flexDirection={{ base: 'column', md: 'row' }}>
-          <Box flex={{ base: 1, md: 2 }} marginLeft='250px' marginTop='30px' marginBottom='30px'>
+          <Box flex={{ base: 1, md: 2 }} marginLeft={marginLeftValue} marginTop='30px' marginBottom='30px'>
             <Heading as="h1" size="xl" mb={4} color="#217dc1">
               QUIENES SOMOS?
             </Heading>
-            <Text fontFamily='Poppins, sans-serif'  mb={4} >
+            <Text fontFamily='Poppins, sans-serif' mb={4}>
               En FRIO MUNDO, nos enorgullece llevar más de [número de años de experiencia] años en la vanguardia de la industria de cámaras frigoríficas. Somos una empresa comprometida con la excelencia y la innovación, diseñando y fabricando soluciones de refrigeración de alta calidad que cumplen con las más exigentes normas y necesidades de nuestros clientes.
             </Text>
-            <Text fontFamily='Poppins, sans-serif'  mb={4}>
+            <Text fontFamily='Poppins, sans-serif' mb={4}>
               En cada proyecto que emprendemos, nuestra prioridad es proporcionar soluciones de refrigeración confiables y eficientes que superen las expectativas.
             </Text>
             <Box mt={4}>
@@ -66,7 +74,7 @@ const AboutUs = () => {
               </Flex>
             </Box>
           </Box>
-          <Box flex={{ base: 1, md: 3 }} marginTop='30px' marginBottom='30px' marginRight='200px'>
+          <Box flex={{ base: 1, md: 3 }} marginTop='30px' marginBottom='30px' marginRight={marginRightValue}>
             <Carousel
               autoPlay
               infiniteLoop
@@ -78,7 +86,7 @@ const AboutUs = () => {
             >
               {images.map((image, index) => (
                 <div key={index}>
-                  <img src={image} alt={`Slide ${index}`} style={{ width:'600px', height:'400px' }} />
+                  <img src={image} alt={`Slide ${index}`} style={{ width:imageWidth, height:'auto' }} />
                 </div>
               ))}
             </Carousel>

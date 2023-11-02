@@ -11,7 +11,7 @@ export default function Cards() {
 
   // Estado para almacenar los productos
   const [productos, setProductos] = useState([]);
-  console.log("productos",productos);
+  console.log("productos", productos);
 
   // Función para cargar los productos desde la base de datos
   const getProductos = async () => {
@@ -31,45 +31,43 @@ export default function Cards() {
     }
   };
 
-
   useEffect(() => {
     getProductos();
   }, []);
 
   return (
-    <Grid templateColumns={{ base: '1fr', sm: 'repeat(3, 1fr)', md: 'repeat(3, 1fr)' }} gap={4} justifyContent="center" marginLeft='230px' marginRight='230px'>
-    {productos?.map((producto, index) => (
-      <GridItem key={index} display="flex" flexDirection="column" alignItems="center">
-        <Link href={`/category/${producto.category}`}>
-        <Card maxW="300px" mx="auto" bgColor="#217dc1" color="#FFFFFF" alignItems="center" fontFamily='Poppins, sans-serif' fontSize="20px">
-          <CardBody>
-            <Image
-             objectFit="cover"
-              src={producto.image}
-              alt={`Imagen de ${producto.name}`}
-              borderRadius='full'
-              border="4px"
-              borderColor="blue.500"
-              boxSize="250px"
-               boxShadow="md" 
-            />
-          </CardBody>
-          <CardFooter
-    justify='space-between'
-    flexWrap='wrap'
-    sx={{
-      '& > button': {
-        minW: '136px',
-      },
-    }}
-  >
-{producto.category}
-  </CardFooter>
-        </Card>
-        </Link>
-      </GridItem>
-    ))}
-  </Grid>
-);
+    <Grid templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }} gap={4} justifyContent="center" p={4}>
+      {productos?.map((producto, index) => (
+        <GridItem key={index} display="flex" flexDirection="column" alignItems="center">
+          <Link href={`/category/${producto.category}`}>
+            <Card maxW="300px" mx="auto" bgColor="#217dc1" color="#FFFFFF" alignItems="center" fontFamily='Poppins, sans-serif' fontSize="20px">
+              <CardBody>
+                <Image
+                  objectFit="cover"
+                  src={producto.image}
+                  alt={`Imagen de ${producto.name}`}
+                  borderRadius='full'
+                  border="4px"
+                  borderColor="blue.500"
+                  boxSize="250px"
+                  boxShadow="md"
+                />
+              </CardBody>
+              <CardFooter
+                justify='space-between'
+                flexWrap='wrap'
+                sx={{
+                  '& > button': {
+                    minW: '136px',
+                  },
+                }}
+              >
+                {producto.category}
+              </CardFooter>
+            </Card>
+          </Link>
+        </GridItem>
+      ))}
+    </Grid>
+  );
 }
-

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
-import {  Alert, AlertIcon, AlertTitle, AlertDescription, Box, Text, Heading, Image, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Grid, Flex } from '@chakra-ui/react';
+import { Alert, AlertIcon, AlertTitle, AlertDescription, Box, Text, Heading, Image, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Grid, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import * as Components from "../../components";
 import { FaShieldAlt, FaTruck } from 'react-icons/fa';
@@ -13,7 +13,6 @@ function Category() {
   const [carrito, setCarrito] = useState([]);
   const [total, setTotal] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [zoomedImage, setZoomedImage] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -63,10 +62,6 @@ function Category() {
     }, 5000); // Ocultar la alerta después de 5 segundos
   };
 
-  const handleZoomImage = (url) => {
-    setZoomedImage(url);
-  };
-
   useEffect(() => {
     getProductos();
   }, [category]);
@@ -85,36 +80,16 @@ function Category() {
             p={4}
             display="flex"
           >
-            <div
-              onMouseEnter={() => handleZoomImage(product.image)}
-              onMouseLeave={() => handleZoomImage(null)}
-              style={{ position: 'relative' }}
-            >
-              <Image
-                marginLeft='200px'
-                src={product.image}
-                alt={`Imagen de ${product.name}`}
-                borderRadius="lg"
-                border="4px solid #217dc1"
-                boxSize="100%"
-                width='700px'
-                height='600px'
-              />
-              {zoomedImage === product.image && (
-                <Image
-                  src={product.image}
-                  alt={`Zoom de ${product.name}`}
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '200px', // Ajusta el tamaño de zoom según tus necesidades
-                    height: 'auto',
-                    zIndex: 1,
-                  }}
-                />
-              )}
-            </div>
+            <Image
+              marginLeft='200px'
+              src={product.image}
+              alt={`Imagen de ${product.name}`}
+              borderRadius="lg"
+              border="4px solid #217dc1"
+              boxSize="100%"
+              width='700px'
+              height='600px'
+            />
             <Box marginTop="4" marginLeft='200px'>
               <Text color="black" fontFamily='Poppins' fontSize='30px'>{product.category}</Text>
               <Text color='black' fontWeight="bold" bgColor="#217dc1" fontSize='20px'>Detalle del Producto:</Text>
@@ -122,11 +97,11 @@ function Category() {
               
               <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize='15px' paddingTop='5px'>
                 <FaShieldAlt /> Garantía: 1 año
-                </Text>
-                <br></br>
-                <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize='15px' paddingTop='5px'>
-                  <FaTruck /> Envíos a todo el pais
-                </Text>
+              </Text>
+              <br></br>
+              <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize='15px' paddingTop='5px'>
+                <FaTruck /> Envíos a todo el país
+              </Text>
               
               <Text
                 fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
@@ -180,7 +155,7 @@ function Category() {
       <AlertTitle mt={4} mb={1} fontSize="lg" color="black"> 
         Éxito
       </AlertTitle>
-      <AlertDescription maxWidth="sm" color="black"> {/* Cambia el color del texto a negro */}
+      <AlertDescription maxWidth="sm" color="black">
         {successMessage}
       </AlertDescription>
     </Alert>
