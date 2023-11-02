@@ -94,15 +94,7 @@ const Cart = ({ items, onRemoveItem, onCheckout, isOpen, onClose }) => {
                 </Flex>
               ))
             )}
-            <Button
-              onClick={onCheckout}
-              mt={4}
-              bgColor="#217dc1"
-              color="#FFFFFF"
-              colorScheme="blue"
-            >
-              Realizar Compra
-            </Button>
+          
           </DrawerBody>
         </DrawerContent>
       </DrawerOverlay>

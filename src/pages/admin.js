@@ -6,7 +6,6 @@ export default function admin() {
     <div>
       <Components.Header/>
       <Components.AdminForm/>
-      <Components.LogoutButton />
       <Components.Footer/>
     </div>
   )
