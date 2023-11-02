@@ -76,7 +76,7 @@ const Footer = () => {
           <form className="bottom_form">
             <Text fontSize="xl" mb={2}>
               Para más info
-              Política de Privacidad, Política de Cookies, Aviso Legal
+             
             </Text>
             <Input
                className="enter"
