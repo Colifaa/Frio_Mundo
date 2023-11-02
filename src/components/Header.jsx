@@ -16,11 +16,11 @@ const Header = () => {
     <Box as="header" bgColor="blue.50" bgImage="/chico.png" bgSize="cover" bgPos="center" bgRepeat="no-repeat">
       <Flex justify="space-between" align="center" flexWrap="wrap" padding={4}>
         <Box flex={{ base: 1, sm: 1, md: 2 }}>
-          <Box maxW={{ base: "120px", sm: "240px" }} marginLeft={['10px', '40px']}>
-            <Link href="/">
-              <img src="/LOGOBIEN.png" alt="Logo" />
-            </Link>
-          </Box>
+        <Box maxW={{ base: "150px", sm: "200px" }} marginLeft={['10px', '40px']}>
+  <Link href="/">
+    <img src="/LOGOBIEN.png" alt="Logo" />
+  </Link>
+</Box>
         </Box>
 
         <Box flex={{ base: 1, sm: 1, md: 2 }}>
@@ -48,12 +48,13 @@ const Header = () => {
           </HStack>
           {/* Botón de hamburguesa */}
           <Button
-            colorScheme="teal"
-            display={{ base: "block", md: "none" }}
-            leftIcon={<Icon as={FaBars} />}
-            onClick={toggleMenu}
-            zIndex={10}
-          />
+  colorScheme="blue"
+  display={{ base: "block", md: "none" }}
+  leftIcon={<Icon as={FaBars} />}
+  onClick={toggleMenu}
+  zIndex={10}
+  ml="auto" // Alinea a la derecha en dispositivos móviles
+/>
         </Box>
       </Flex>
       {menuOpen && (
