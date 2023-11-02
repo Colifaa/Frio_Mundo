@@ -69,47 +69,47 @@ const WhatsAppForm = ({ cartItems }) => {
   return (
     <Box p={4}>
       <FormControl>
-        <FormLabel>Nombre:</FormLabel>
+        <FormLabel color="purple" >Nombre:</FormLabel>
         <Input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          bg="#FF5733" // Cambio de fondo a color naranja
+   bgColor="blue.100"
           color="Purple" // Texto en color blanco
         />
       </FormControl>
       <FormControl>
-        <FormLabel>Número de Teléfono:</FormLabel>
+        <FormLabel color="purple" >Número de Teléfono:</FormLabel>
         <Input
           type="tel"
           name="phoneNumber"
           value={formData.phoneNumber}
           onChange={handleChange}
-          bg="#FF5733" // Cambio de fondo a color naranja
-          color="white" // Texto en color blanco
+          bgColor="blue.100"
+          color="purple" // Texto en color blanco
         />
       </FormControl>
       <FormControl>
-        <FormLabel>Dirección de Entrega:</FormLabel>
+        <FormLabel color="purple" >Dirección de Entrega:</FormLabel>
         <Input
           type="text"
           name="address"
           value={formData.address}
           onChange={handleChange}
-          bg="#FF5733" // Cambio de fondo a color naranja
-          color="white" // Texto en color blanco
+          bgColor="blue.100"
+          color="purple" // Texto en color blanco
         />
       </FormControl>
       <FormControl>
-        <FormLabel>Tipo de Paneles:</FormLabel>
+        <FormLabel color="purple" >Tipo de Paneles:</FormLabel>
         <Select
           placeholder='Selecciona un Panel'
           name="temperatureType"
           value={formData.temperatureType}
           onChange={handleChange}
-          bg="#FF5733" // Cambio de fondo a color naranja
-          color="white" // Texto en color blanco
+          bgColor="blue.100"
+          color="purple" // Texto en color blanco
         >
           <option value="media">Media temperatura</option>
           <option value="baja">Baja temperatura (congelado)</option>
@@ -117,7 +117,7 @@ const WhatsAppForm = ({ cartItems }) => {
       </FormControl>
       {formData.temperatureType === 'media' && (
         <FormControl>
-          <FormLabel>Grosor (50-60 mm): {formData.mediaTemperature} mm</FormLabel>
+          <FormLabel color="purple" >Grosor (50-60 mm): {formData.mediaTemperature} mm</FormLabel>
           <Input
             type="range"
             min="50"
@@ -125,34 +125,36 @@ const WhatsAppForm = ({ cartItems }) => {
             name="mediaTemperature"
             value={formData.mediaTemperature}
             onChange={handleChange}
-            bg="#FF5733" // Cambio de fondo a color naranja
-            color="white" // Texto en color blanco
+            bgColor="blue.100"
+            color="purple" // Texto en color blanco
           />
         </FormControl>
       )}
       {formData.temperatureType === 'baja' && (
-        <FormControl>
-          <FormLabel>Grosor (100-150 mm): {formData.bajaTemperature} mm</FormLabel>
+        <FormControl >
+          <FormLabel color="purple" >Grosor (100-150 mm): {formData.bajaTemperature} mm</FormLabel>
           <Input
+          
             type="range"
             min="100"
             max="150"
             name="bajaTemperature"
             value={formData.bajaTemperature}
             onChange={handleChange}
-            bg="#FF5733" // Cambio de fondo a color naranja
-            color="white" // Texto en color blanco
+     
+            bgColor="blue.100"
+            color="purple" // Texto en color blanco
           />
         </FormControl>
       )}
       <FormControl>
-        <FormLabel>Temperatura:</FormLabel>
+        <FormLabel color="purple" >Temperatura:</FormLabel>
         <Select
           name="temperature"
           value={formData.temperature}
           onChange={handleChange}
-          bg="#FF5733" // Cambio de fondo a color naranja
-          color="white" // Texto en color blanco
+          bgColor="blue.100"
+          color="purple" // Texto en color blanco
         >
           <optgroup label="Media temperatura">
             <option value="0">0°C</option>
@@ -175,43 +177,34 @@ const WhatsAppForm = ({ cartItems }) => {
         </Select>
       </FormControl>
       <FormControl>
-        <FormLabel>Altura (cm):</FormLabel>
+        <FormLabel color="purple" >Altura (cm):</FormLabel>
         <Input
           type="number"
           name="height"
           value={formData.height}
           onChange={handleChange}
           min="0"
-          bg="#FF5733" // Cambio de fondo a color naranja
-          color="white" // Texto en color blanco
+          bgColor="blue.100"
+          color="purple" // Texto en color blanco
         />
       </FormControl>
       <FormControl>
-        <FormLabel>Ancho (cm):</FormLabel>
+        <FormLabel color="purple" >Ancho (cm):</FormLabel>
         <Input
           type="number"
           name="width"
           value={formData.width}
           onChange={handleChange}
           min="0"
-          bg="#FF5733" // Cambio de fondo a color naranja
-          color="white" // Texto en color blanco
+       bgColor="blue.100"
+          color="purple" // Texto en color blanco
         />
       </FormControl>
-      <FormControl>
-        <FormLabel>Mensaje (opcional):</FormLabel>
-        <Textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          bg="#FF5733" // Cambio de fondo a color naranja
-          color="white" // Texto en color blanco
-        />
-      </FormControl>
+      
       <Button
         onClick={handleSubmit}
         colorScheme="blue"
-        bgColor="#FF5733"
+        aColor="#FF5733"
         mt={4}
         width="100%"
       >

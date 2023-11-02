@@ -283,9 +283,9 @@ function CardsCategories() {
           )}
           {/* Agrega el componente de carrito aquí */}
           {carrito.length > 0 ? (
-            <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="lg">
+            <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="sm">
               <DrawerOverlay>
-                <DrawerContent bgSize="cover" bgRepeat="no-repeat" bgImage="https://imgs.search.brave.com/u-Sd564-mpOMJWAKNrADuiNgYNHh2AKhzbncyCkdS1k/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zZXJ2/aWNlcy5tZXRlb3Jl/ZC5jb20vaW1nL2Fy/dGljbGUvZm90b2dy/YWZvLWNhcHR1cmEt/YXMtaW1hZ2Vucy1t/YWlzLWRldGFsaGFk/YXMtZGUtZmxvY29z/LWRlLW5ldmUtMTYz/OTQ4MTkxMDI1M18x/MDI0LmpwZw">
+                <DrawerContent bgSize="cover" bgRepeat="no-repeat"bgImage="https://imgs.search.brave.com/mz4KbHsFHfDjr9HQcWBUBnOl09PHtrh2T3w1bmIW7Mw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5mb2JhZS5jb20v/bmV3LXJlc2l6ZXIv/RFJHajVjcXFZT1hu/YW4zUFNNVHlWODAx/M2I0PS9maWx0ZXJz/OmZvcm1hdCh3ZWJw/KTpxdWFsaXR5KDg1/KS9hcmMtYW5nbGVy/ZmlzaC1hcmMyLXBy/b2QtaW5mb2JhZS5z/My5hbWF6b25hd3Mu/Y29tL3B1YmxpYy9I/NzJIUlgzUzRORjZC/TDJPT0tNVDVVM0NP/TS5qcGc">
                   <DrawerCloseButton />
                   <DrawerHeader>Realizar Compra</DrawerHeader>
                   <DrawerBody>
