@@ -126,7 +126,7 @@ function CardsAdmin() {
       {productos?.map((producto) => (
         <Box key={producto.id} display="flex" flexDirection="column" alignItems="center">
           <Card maxW="300px" mx="auto" bgColor="#000000" color="#FFFFFF" alignItems="center">
-            <CardBody>
+            <CardBody > 
               <Image
                 src={producto.image}
                 alt={`Imagen de ${producto.name}`}

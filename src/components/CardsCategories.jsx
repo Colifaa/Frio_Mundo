@@ -202,16 +202,20 @@ function CardsCategories() {
         {/* Contenido principal en el centro */}
         <Box w="60%" p="4">
           <Grid
-            templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
-            gap={4}
-            justifyContent="center"
+              templateColumns={{ base: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
+              gap={4}
+              justifyContent="center"
           >
             {productos
               .filter(producto => !selectedCategory || producto.category === selectedCategory)
               .map((producto, index) => (
                 <Box key={index} display="flex" flexDirection="column" alignItems="center">
-                  <Card maxW="300px" mx="auto" bgColor="white" color="#FFFFFF" alignItems="center">
-                    <CardBody>
+                  <Card     mx="auto" bgColor="white" color="#FFFFFF" alignItems="center">    
+                    <CardBody   borderRadius='full'
+             
+              borderColor="blue.500"
+              boxSize="250px"
+               boxShadow="md" >
                       <Image
                         src={producto.image}
                         alt={`Imagen de ${producto.category}`}
