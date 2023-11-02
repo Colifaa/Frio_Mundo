@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
-import { Alert, AlertIcon, AlertTitle, AlertDescription, Box, Text, Heading, Image, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Grid, Flex } from '@chakra-ui/react';
+import { Alert, AlertIcon, AlertTitle, AlertDescription, Box, Text, Heading, Image, Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import * as Components from "../../components";
 import { FaShieldAlt, FaTruck } from 'react-icons/fa';
@@ -66,43 +66,48 @@ function Category() {
     getProductos();
   }, [category]);
 
+  const responsiveProductStyle = {
+    maxWidth: '100%',
+    width: ['100%', '100%', '50%', '30%'],
+  };
+
   return (
     <div>
       <Components.Header />
-      <Flex>
+      <Flex flexWrap="wrap" justifyContent="center"> {/* Centra el contenido */}
         {products.map((product) => (
-          <Box 
+          <Box
             key={product.id}
-            maxW="300%"
             m={4}
             bgColor="white"
             color="#FFFFFF"
             p={4}
             display="flex"
+            flexDirection={['column', 'column', 'row', 'row']}
+            alignItems="center" // Centra verticalmente
+            {...responsiveProductStyle}
           >
             <Image
-              marginLeft='200px'
               src={product.image}
               alt={`Imagen de ${product.name}`}
               borderRadius="lg"
               border="4px solid #217dc1"
               boxSize="100%"
-              width='700px'
-              height='600px'
+              width={['100%', '100%', '100%', '100%']}
+              height={['auto', 'auto', '500px', '500px']}
             />
-            <Box marginTop="4" marginLeft='200px'>
-              <Text color="black" fontFamily='Poppins' fontSize='30px'>{product.category}</Text>
-              <Text color='black' fontWeight="bold" bgColor="#217dc1" fontSize='20px'>Detalle del Producto:</Text>
-              <Text color='black' >{product.detailmax}</Text>
-              
-              <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize='15px' paddingTop='5px'>
+            <Box ml={['0', '0', '4', '4']}>
+              <Text color="black" fontFamily='Poppins' fontSize={['md', 'md', '2xl', '3xl']}>{product.category}</Text>
+              <Text color='black' fontWeight="bold" bgColor="#217dc1" fontSize={['xl', 'xl', '2xl', '2xl']}>Detalle del Producto:</Text>
+              <Text color='black'>{product.detailmax}</Text>
+
+              <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize={['sm', 'sm', 'md', 'md']} pt={['2', '2', '5', '5']}>
                 <FaShieldAlt /> Garantía: 1 año
               </Text>
-              <br></br>
-              <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize='15px' paddingTop='5px'>
+              <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize={['sm', 'sm', 'md', 'md']} pt={['2', '2', '5', '5']}>
                 <FaTruck /> Envíos a todo el país
               </Text>
-              
+
               <Text
                 fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
                 fontWeight="light"
@@ -113,7 +118,7 @@ function Category() {
               <Heading size="md" color="#A7414C">
                 {product.name}
               </Heading>
-              <Text color="BLACK" fontSize="xl">
+              <Text color="BLACK" fontSize={['md', 'lg', 'xl', '2xl']}>
                 ${product.price}
               </Text>
               <Button
@@ -141,24 +146,24 @@ function Category() {
             zIndex: 999,
           }}
         >
-         <Box borderRadius="2xl"  bgColor="blue.600" p={2} maxW="500px" w="90%">
+          <Box borderRadius="2xl" bgColor="blue.600" p={2} maxW="500px" w="90%">
             <Alert
-               status="success"
-               variant="subtle"
-               flexDirection="column"
-               alignItems="center"
-               justifyContent="center"
-               textAlign="center"
-               height="auto"
+              status="success"
+              variant="subtle"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              height="auto"
             >
-          <AlertIcon boxSize="80px" mr={0} />
-      <AlertTitle mt={4} mb={1} fontSize="lg" color="black"> 
-        Éxito
-      </AlertTitle>
-      <AlertDescription maxWidth="sm" color="black">
-        {successMessage}
-      </AlertDescription>
-    </Alert>
+              <AlertIcon boxSize="80px" mr={0} />
+              <AlertTitle mt={4} mb={1} fontSize="lg" color="black">
+                Éxito
+              </AlertTitle>
+              <AlertDescription maxWidth="sm" color="black">
+                {successMessage}
+              </AlertDescription>
+            </Alert>
           </Box>
         </div>
       )}
