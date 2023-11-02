@@ -75,7 +75,6 @@ function Category() {
     <div>
       <Components.Header />
       <Flex>
-        <h1>Productos en la categoría <br></br>{category}</h1>
         {products.map((product) => (
           <Box 
             key={product.id}

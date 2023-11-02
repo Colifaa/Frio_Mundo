@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { supabase } from "../../lib/supabaseClient";
 import CardsAdmin from './CardsAdmin';
+import * as Components from "../components";
 
 function AdminForm() {
   const [showForm, setShowForm] = useState(false);
@@ -55,6 +56,7 @@ function AdminForm() {
 
   const toggleForm = () => {
     setShowForm(!showForm);
+    
   };
 
   const handleSubmit = async (e) => {
@@ -102,6 +104,7 @@ function AdminForm() {
             setProductoSeleccionado(nuevoProducto);
             setIsFormularioOpen(true);
             handleClose();
+            window.location.reload(); // Recargar la página
           }
         }
       };
@@ -127,9 +130,13 @@ function AdminForm() {
 
 
   return (
-    <Box p={4}>
+    <Box  bgRepeat="no-repeat" bgSize="cover" bgImage="https://images.unsplash.com/photo-1483664852095-d6cc6870702d?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" p={4}>
+    
       {isLoggedIn && (
         <>
+      
+
+        
           <Modal isOpen={showForm} onClose={handleClose}>
             <ModalOverlay />
             <ModalContent>
@@ -192,16 +199,23 @@ function AdminForm() {
               </ModalFooter>
             </ModalContent>
           </Modal>
-  
-          <CardsAdmin />
-          <Box display="flex" justifyContent="center" mt={4}>
+          <Box display="flex" justifyContent="center" justifyItems="center" my={5}>
             <Button onClick={toggleForm} colorScheme='blue'>
               {showForm ? 'Cerrar Formulario' : 'Agregar Producto'}
             </Button>
+       
           </Box>
+          <Components.LogoutButton/>
+          <CardsAdmin />
+         
+      
+         
         </>
+        
       )}
+    
     </Box>
+         
   );
       }  
 
