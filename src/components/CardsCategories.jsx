@@ -1,4 +1,4 @@
-import { useMediaQuery } from 'react-responsive';
+
 import { supabase } from '../../lib/supabaseClient';
 import * as Components from '../components';
 import Link from 'next/link';
@@ -106,7 +106,7 @@ function CardsCategories() {
     }
   };
 
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
 
   return (
 
@@ -273,7 +273,7 @@ function CardsCategories() {
         {carrito.length > 0 ? (
           <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="sm">
             <DrawerOverlay>
-              <DrawerContent bgSize="cover" bgRepeat="no-repeat" bgImage="tu-imagen-de-fondo">
+              <DrawerContent bgSize="cover" bgRepeat="no-repeat" bgImage="https://media.istockphoto.com/id/866676980/es/foto/bosque-de-hielo.jpg?s=2048x2048&w=is&k=20&c=epQKjMcOpEU-RLCxeqyoGHyDGf0_Gk4mSvJ3ndLKVIw=">
                 <DrawerCloseButton />
                 <DrawerHeader>Realizar Compra</DrawerHeader>
                 <DrawerBody>
@@ -320,7 +320,7 @@ function CardsCategories() {
       </Box>
       <Drawer isOpen={isProductDrawerOpen} placement="right" onClose={closeProductDrawer} size="md">
         <DrawerOverlay>
-          <DrawerContent bgSize="cover" bgRepeat="no-repeat" bgImage="tu-imagen-de-fondo">
+          <DrawerContent bgSize="cover" bgRepeat="no-repeat" bgImage="https://media.istockphoto.com/id/1135953192/es/foto/bosque-en-una-cresta-de-monta%C3%B1a-cubierta-de-nieve-v%C3%ADa-l%C3%A1ctea-en-un-cielo-estrellado-noche-de.jpg?s=2048x2048&w=is&k=20&c=N5ts0vAVPWN3krWvLNWtdCg7hkxHvuqCJHJQSAN6jr4=">
             <DrawerCloseButton />
             <DrawerHeader>Detalles del Producto</DrawerHeader>
             <DrawerBody>
