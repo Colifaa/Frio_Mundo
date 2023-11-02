@@ -74,7 +74,7 @@ function Category() {
   return (
     <div>
       <Components.Header />
-      <Flex flexWrap="wrap" justifyContent="center"> {/* Centra el contenido */}
+      <Flex flexWrap="wrap" justifyContent="center" bgImage="https://media.istockphoto.com/id/1135953192/es/foto/bosque-en-una-cresta-de-monta%C3%B1a-cubierta-de-nieve-v%C3%ADa-l%C3%A1ctea-en-un-cielo-estrellado-noche-de.jpg?s=2048x2048&w=is&k=20&c=N5ts0vAVPWN3krWvLNWtdCg7hkxHvuqCJHJQSAN6jr4="> {/* Centra el contenido */}
         {products.map((product) => (
           <Box
             key={product.id}
@@ -83,8 +83,9 @@ function Category() {
             color="#FFFFFF"
             p={4}
             display="flex"
-            flexDirection={['column', 'column', 'row', 'row']}
+            flexDirection={['column', ]}
             alignItems="center" // Centra verticalmente
+          bgImage="https://media.istockphoto.com/id/861625352/es/foto/fondo-de-textura-de-nieve-brillante.jpg?s=2048x2048&w=is&k=20&c=G0O0iUuL6QkrhaM_7lTcNac943NhkuyVibE-fYSnhTs="
             {...responsiveProductStyle}
           >
             <Image
@@ -96,7 +97,7 @@ function Category() {
               width={['100%', '100%', '100%', '100%']}
               height={['auto', 'auto', '500px', '500px']}
             />
-            <Box ml={['0', '0', '4', '4']}>
+            <Box ml={['0', '0', '4', '4']} style={{ whiteSpace: 'pre-wrap' }}>
               <Text color="black" fontFamily='Poppins' fontSize={['md', 'md', '2xl', '3xl']}>{product.category}</Text>
               <Text color='black' fontWeight="bold" bgColor="#217dc1" fontSize={['xl', 'xl', '2xl', '2xl']}>Detalle del Producto:</Text>
               <Text color='black'>{product.detailmax}</Text>
