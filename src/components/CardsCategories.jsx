@@ -156,10 +156,10 @@ function CardsCategories() {
             }}
           >
             <Link href={`/category/${category}`} style={{ display: 'flex', alignItems: 'center' }}>
-              <Box borderWidth="1px" borderRadius="md" p="2" borderColor="black" bgColor="blue.300">
+              <Box  borderWidth="1px" borderRadius="md" p="2" borderColor="black" bgColor="blue.300">
                 <FaSnowflake />
               </Box>
-              <Box ml="2">{category}</Box>
+              <Box  ml="2">{category}</Box>
             </Link>
           </li>
         ))}
@@ -167,8 +167,8 @@ function CardsCategories() {
       </Flex>
       
       
-      <HStack spacing={4} alignItems="center" justifyContent="center">
-      <Button mt={4} onClick={handleOpenCart} leftIcon={<FaShoppingCart />}>
+      <HStack  spacing={4} alignItems="center" justifyContent="center">
+      <Button mb="4" mt="4"  onClick={handleOpenCart} leftIcon={<FaShoppingCart />}>
   Abrir Carrito
 </Button>
         <Components.Cart
@@ -183,7 +183,7 @@ function CardsCategories() {
             console.log('Compra realizada');
           }}
         />
-<Button onClick={handleRealizarCompraClick} mt={4} colorScheme="blue" bgColor="#FF5733">
+<Button  mb="4" mt="4" onClick={handleRealizarCompraClick} colorScheme="blue" bgColor="#FF5733">
   Comprar Ahora
 </Button>
       </HStack>
@@ -274,7 +274,7 @@ function CardsCategories() {
           <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="sm">
             <DrawerOverlay>
               <DrawerContent bgSize="cover" bgRepeat="no-repeat" bgImage="https://media.istockphoto.com/id/866676980/es/foto/bosque-de-hielo.jpg?s=2048x2048&w=is&k=20&c=epQKjMcOpEU-RLCxeqyoGHyDGf0_Gk4mSvJ3ndLKVIw=">
-                <DrawerCloseButton />
+                <DrawerCloseButton color="blue.300" bgColor="blue.200" />
                 <DrawerHeader>Realizar Compra</DrawerHeader>
                 <DrawerBody>
                   <Components.WhatsAppForm cartItems={carrito} />
@@ -321,7 +321,7 @@ function CardsCategories() {
       <Drawer isOpen={isProductDrawerOpen} placement="right" onClose={closeProductDrawer} size="md">
         <DrawerOverlay>
           <DrawerContent bgSize="cover" bgRepeat="no-repeat" bgImage="https://media.istockphoto.com/id/1135953192/es/foto/bosque-en-una-cresta-de-monta%C3%B1a-cubierta-de-nieve-v%C3%ADa-l%C3%A1ctea-en-un-cielo-estrellado-noche-de.jpg?s=2048x2048&w=is&k=20&c=N5ts0vAVPWN3krWvLNWtdCg7hkxHvuqCJHJQSAN6jr4=">
-            <DrawerCloseButton />
+          <DrawerCloseButton color="blue.300" bgColor="blue.200" />
             <DrawerHeader>Detalles del Producto</DrawerHeader>
             <DrawerBody>
               {selectedProduct && (
