@@ -50,7 +50,7 @@ function Nosotros() {
       </div>
       <div className="content-container">
         <div className="text-container">
-          <h2 style={{color:'#0551ab', fontFamily:'Poppins'}}>SOBRE NOSOTROS</h2>
+          <h2 style={{color:'#0551ab', fontFamily:'Poppins, sans-serif'}}>SOBRE NOSOTROS</h2>
           <p>En FRIO MUNDO, nos enorgullece ser líderes en la industria de cámaras frigoríficas, ofreciendo soluciones de almacenamiento en frío de primera calidad para una amplia gama de aplicaciones. Desde nuestra fundación, hemos estado comprometidos con la excelencia y la satisfacción del cliente, construyendo relaciones sólidas basadas en la confianza y la calidad.</p>
         </div>
         <div className="carousel-container carousel-container-mobile">
@@ -64,7 +64,7 @@ function Nosotros() {
 </div>
       </div>
       <div className="philosophy-container">
-        <Text color='#0551ab' fontFamily='Poppins' fontSize='30px'>Nuestra Filosofia</Text>
+        <Text color='#0551ab' fontFamily='Poppins, sans-serif' fontSize='30px'>Nuestra Filosofia</Text>
       </div>
       <div className="values-container">
         {cards.map((card, index) => (
@@ -102,7 +102,7 @@ function Nosotros() {
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-          font-family: 'Poppins';
+          font-family: 'Poppins, sans-serif';
           height: 300px;
           text-align: center;
           position: relative;
@@ -113,7 +113,7 @@ function Nosotros() {
         }
 
         .header h1 {
-          font-family: 'Poppins';
+          font-family: 'Poppins, sans-serif';
           color: white;
           margin-top: 100px;
           font-size: 40px;

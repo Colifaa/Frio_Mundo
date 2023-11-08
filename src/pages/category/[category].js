@@ -15,8 +15,22 @@ function Category() {
   const [isOpen, setIsOpen] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [showAlert2, setShowAlert2] = useState(false);
+ 
 
-  const onOpen = () => setIsOpen(true);
+  const onOpen = () => {
+    if (carrito.length === 0) {
+      setShowAlert2(true); // Muestra la alerta si el carrito está vacío
+  
+      // Configura un temporizador para ocultar la alerta después de 5 segundos
+      setTimeout(() => {
+        setShowAlert2(false);
+      }, 3000); // Ocultar la alerta después de 5 segundos (ajusta el tiempo según tus necesidades)
+    } else {
+      setIsOpen(true); // Abre el Drawer para realizar la compra
+    }
+  };
+  
   const onClose = () => setIsOpen(false);
 
   const getProductos = async () => {
@@ -60,7 +74,12 @@ function Category() {
       setShowAlert(false);
       setSuccessMessage("");
     }, 5000); // Ocultar la alerta después de 5 segundos
+
+    
+
   };
+
+ 
 
   useEffect(() => {
     getProductos();
@@ -74,7 +93,7 @@ function Category() {
   return (
     <div>
       <Components.Header />
-      <Flex flexWrap="wrap" justifyContent="center" bgImage="https://media.istockphoto.com/id/1135953192/es/foto/bosque-en-una-cresta-de-monta%C3%B1a-cubierta-de-nieve-v%C3%ADa-l%C3%A1ctea-en-un-cielo-estrellado-noche-de.jpg?s=2048x2048&w=is&k=20&c=N5ts0vAVPWN3krWvLNWtdCg7hkxHvuqCJHJQSAN6jr4="> {/* Centra el contenido */}
+      <Flex flexWrap="wrap" justifyContent="center" bgRepeat="no-repeat" bgSize="cover" bgImage="https://cdn.pixabay.com/photo/2016/02/13/12/26/aurora-1197753_1280.jpg"> {/* Centra el contenido */}
         {products.map((product) => (
           <Box
             key={product.id}
@@ -122,17 +141,24 @@ function Category() {
               <Text color="BLACK" fontSize={['md', 'lg', 'xl', '2xl']}>
                 ${product.price}
               </Text>
+              <Box display="flex" justifyContent="center" alignItems="center" > 
               <Button
+             mr="2"
                 colorScheme="green"
                 bgColor="#217dc1"
                 onClick={() => handleAddToCart(product)}
               >
                 Agregar Pedido
               </Button>
+              <Button  onClick={onOpen}  colorScheme="WHITE" bgColor="#217dc1" >
+          Realizar Compra
+        </Button>
+        </Box>
             </Box>
           </Box>
         ))}
       </Flex>
+      
       {showAlert && (
         <div
           style={{
@@ -166,6 +192,7 @@ function Category() {
               </AlertDescription>
             </Alert>
           </Box>
+          
         </div>
       )}
       <Components.Cart
@@ -177,16 +204,16 @@ function Category() {
         onCheckout={() => {
           console.log('Compra realizada');
         }}
+        
       />
-      <Flex justifyContent="center">
-        <Button onClick={onOpen} mt={4} colorScheme="WHITE" bgColor="#217dc1">
-          Realizar Compra
-        </Button>
+      
+      <Flex justifyContent="center" bgSize="cover" bgImage="https://cdn.pixabay.com/photo/2016/02/13/12/26/aurora-1197753_1280.jpg">
+        
       </Flex>
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="sm">
         <DrawerOverlay>
-          <DrawerContent>
-            <DrawerCloseButton />
+        <DrawerContent bgSize="cover" bgRepeat="no-repeat" bgImage="https://media.istockphoto.com/id/866676980/es/foto/bosque-de-hielo.jpg?s=2048x2048&w=is&k=20&c=epQKjMcOpEU-RLCxeqyoGHyDGf0_Gk4mSvJ3ndLKVIw=">
+        <DrawerCloseButton color="blue.300" bgColor="blue.200" />
             <DrawerHeader alignItems='center'>Realizar Compra</DrawerHeader>
             <DrawerBody>
               <Components.WhatsAppForm cartItems={carrito} />
@@ -194,6 +221,40 @@ function Category() {
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>
+      {carrito.length === 0 && showAlert2 && (
+          <div
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 999,
+          }}
+        >
+
+<Box borderRadius="2xl" bgColor="blue.600" p={2} maxW="500px" w="90%">
+     <Alert
+       status="warning"
+       variant="subtle"
+       flexDirection="column"
+       alignItems="center"
+       justifyContent="center"
+       textAlign="center"
+       height="auto"
+     >
+       <AlertIcon boxSize="80px" mr={0} />
+       <AlertTitle>No hay productos en el carrito</AlertTitle>
+       <AlertDescription maxWidth="sm" color="black">
+         Debes agregar productos al carrito para realizar el pedido.
+       </AlertDescription>
+     </Alert>
+   </Box>
+   </div>
+      )}
       <Components.Footer />
     </div>
   );
