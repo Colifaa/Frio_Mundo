@@ -103,7 +103,7 @@ function Category() {
               <Text color='black'>{product.detailmax}</Text>
 
               <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize={['sm', 'sm', 'md', 'md']} pt={['2', '2', '5', '5']}>
-                <FaShieldAlt /> Garantía: 1 año
+                <FaShieldAlt /> Garantía: 6 meses a 12 meses
               </Text>
               <Text color="black" bgColor="#217dc1" fontFamily='Poppins' fontSize={['sm', 'sm', 'md', 'md']} pt={['2', '2', '5', '5']}>
                 <FaTruck /> Envíos a todo el país

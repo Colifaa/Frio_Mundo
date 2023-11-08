@@ -21,7 +21,7 @@ function Nosotros() {
     {
       title: "MISIÓN",
       content: "Buscamos la perfección en la termorregulación y la gestión del proceso productivo relacionado con el enfriamiento. Contamos con la mejor tecnología y nos apasiona alcanzar la excelencia en todo lo que hacemos.",
-      backgroundImage: 'url("mision.png")'
+      backgroundImage: 'url("MISION.png")'
     },
     {
       title: "VISIÓN",
@@ -46,7 +46,7 @@ function Nosotros() {
   return (
     <div className="container">
       <div className="header">
-        <h1>NUESTRA EMPRESA</h1>
+      <Text alignItems='center' color='WHITE' fontFamily='Poppins' fontSize='40px' position='relative' textAlign='center' marginTop='120px'>NUESTRA EMPRESA</Text>
       </div>
       <div className="content-container">
         <div className="text-container">

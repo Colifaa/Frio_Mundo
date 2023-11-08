@@ -69,7 +69,7 @@ const WhatsAppForm = ({ cartItems }) => {
   return (
     <Box p={4}>
       <FormControl>
-        <FormLabel color="purple" >Nombre:</FormLabel>
+        <FormLabel color="white" >Nombre:</FormLabel>
         <Input
           type="text"
           name="name"
@@ -80,7 +80,7 @@ const WhatsAppForm = ({ cartItems }) => {
         />
       </FormControl>
       <FormControl>
-        <FormLabel color="purple" >Número de Teléfono:</FormLabel>
+        <FormLabel color="white" >Número de Teléfono:</FormLabel>
         <Input
           type="tel"
           name="phoneNumber"
@@ -91,7 +91,7 @@ const WhatsAppForm = ({ cartItems }) => {
         />
       </FormControl>
       <FormControl>
-        <FormLabel color="purple" >Dirección de Entrega:</FormLabel>
+        <FormLabel color="white" >Dirección de Entrega:</FormLabel>
         <Input
           type="text"
           name="address"
@@ -102,14 +102,14 @@ const WhatsAppForm = ({ cartItems }) => {
         />
       </FormControl>
       <FormControl>
-        <FormLabel color="purple" >Tipo de Paneles:</FormLabel>
+        <FormLabel color="white" >Tipo de Paneles:</FormLabel>
         <Select
           placeholder='Selecciona un Panel'
           name="temperatureType"
           value={formData.temperatureType}
           onChange={handleChange}
           bgColor="blue.100"
-          color="purple" // Texto en color blanco
+          color="black" // Texto en color blanco
         >
           <option value="media">Media temperatura</option>
           <option value="baja">Baja temperatura (congelado)</option>
@@ -117,7 +117,7 @@ const WhatsAppForm = ({ cartItems }) => {
       </FormControl>
       {formData.temperatureType === 'media' && (
         <FormControl>
-          <FormLabel color="purple" >Grosor (50-60 mm): {formData.mediaTemperature} mm</FormLabel>
+          <FormLabel color="white" >Grosor (50-60 mm): {formData.mediaTemperature} mm</FormLabel>
           <Input
             type="range"
             min="50"
@@ -132,7 +132,7 @@ const WhatsAppForm = ({ cartItems }) => {
       )}
       {formData.temperatureType === 'baja' && (
         <FormControl >
-          <FormLabel color="purple" >Grosor (100-150 mm): {formData.bajaTemperature} mm</FormLabel>
+          <FormLabel color="white" >Grosor (100-150 mm): {formData.bajaTemperature} mm</FormLabel>
           <Input
           
             type="range"
@@ -143,12 +143,12 @@ const WhatsAppForm = ({ cartItems }) => {
             onChange={handleChange}
      
             bgColor="blue.100"
-            color="purple" // Texto en color blanco
+            color="white" // Texto en color blanco
           />
         </FormControl>
       )}
       <FormControl>
-        <FormLabel color="purple" >Temperatura:</FormLabel>
+        <FormLabel color="white" >Temperatura:</FormLabel>
         <Select
           name="temperature"
           value={formData.temperature}
@@ -177,7 +177,7 @@ const WhatsAppForm = ({ cartItems }) => {
         </Select>
       </FormControl>
       <FormControl>
-        <FormLabel color="purple" >Altura (cm):</FormLabel>
+        <FormLabel color="white" >Altura (cm):</FormLabel>
         <Input
           type="number"
           name="height"
@@ -189,7 +189,7 @@ const WhatsAppForm = ({ cartItems }) => {
         />
       </FormControl>
       <FormControl>
-        <FormLabel color="purple" >Ancho (cm):</FormLabel>
+        <FormLabel color="white" >Ancho (cm):</FormLabel>
         <Input
           type="number"
           name="width"

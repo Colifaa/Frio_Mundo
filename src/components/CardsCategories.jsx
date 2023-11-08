@@ -334,12 +334,13 @@ function CardsCategories() {
                     borderColor="#217dc1"
                     boxSize="250px"
                   />
-                  <Text mt="10" color="black" fontSize={['xs', 'sm', 'md', 'lg', 'xl']} fontWeight="light" fontFamily="Georgia">
-                    {selectedProduct.Detail}
-                  </Text>
-                  <Heading mt="10" size="md" color="#A7414C">
+                  <Heading mt="10" size="md" color="blue" bgColor="white" borderRadius="50px">
                     {selectedProduct.category}
                   </Heading>
+                  <Text mt="10" color="white" fontSize={['xs', 'sm', 'md', 'lg', 'xl']} fontWeight="light" fontFamily="Georgia" >
+                    {selectedProduct.Detail}
+                  </Text>
+
                   <Text color="#217dc1" fontSize="xl">
                     ${selectedProduct.price}
                   </Text>
