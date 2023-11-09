@@ -68,7 +68,7 @@ const Tree = () => {
                   fontSize={{ base: "sm", md: "5xl" }}
                   style={{...textWithMargin }} // Aplica el estilo de borde y margen
                 >
-                  TRABAJOS A MEDIDA
+                  TRABAJOS<br></br>A MEDIDA NUESTRO EQUIPO <br></br>DISEÑA TU ESPACIO <br></br>DE REFRIGERACION 
                 </Text>
               </motion.div>
               <Image src="234234.png" style={{ maxWidth: "100%" }} />
@@ -91,7 +91,7 @@ const Tree = () => {
                 fontFamily="Poppins, sans serif"
                 fontSize={{ base: "sm", md: "4xl" }}
               >
-                NUESTRO EQUIPO DISEÑA <br></br>TU ESPACIO DE REFRIGERACION
+               
               </Text>
             </motion.div>
             <motion.div
@@ -112,7 +112,7 @@ const Tree = () => {
                 fontFamily="Poppins, sans serif"
                 fontSize={{ base: "sm", md: "4xl" }}
               >
-                CONTACTANOS
+              
               </Text>
             </motion.div>
           </div>

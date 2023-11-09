@@ -46,7 +46,7 @@ const AboutUs = () => {
               QUIENES SOMOS?
             </Heading>
             <Text fontFamily='Poppins, sans-serif' mb={4}>
-              En FRIO MUNDO, nos enorgullece llevar más de [número de años de experiencia] años en la vanguardia de la industria de cámaras frigoríficas. Somos una empresa comprometida con la excelencia y la innovación, diseñando y fabricando soluciones de refrigeración de alta calidad que cumplen con las más exigentes normas y necesidades de nuestros clientes.
+              En FRIO MUNDO, nos enorgullece llevar más de 5 años en la vanguardia de la industria de cámaras frigoríficas. Somos una empresa comprometida con la excelencia y la innovación, diseñando y fabricando soluciones de refrigeración de alta calidad que cumplen con las más exigentes normas y necesidades de nuestros clientes.
             </Text>
             <Text fontFamily='Poppins, sans-serif' mb={4}>
               En cada proyecto que emprendemos, nuestra prioridad es proporcionar soluciones de refrigeración confiables y eficientes que superen las expectativas.
